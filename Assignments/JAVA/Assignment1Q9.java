@@ -1,22 +1,114 @@
+
 class Student {
     private int subjectA,subjectB,subjectC;
 
-    public int studentsTotalMarksInAllSubjects(Student[] students) {}
+    public static int studentsTotalMarksInAllSubjects(Student[] students) {
+        int sum=0;
+        for(Student s:students)
+        {
+            sum+=s.subjectA+s.subjectB+s.subjectC;
+        }
+        return sum;
+    }
 
-    public double studentsAverageMarksInAllSubjects(Student[] students) {}
+    public static double studentsAverageMarksInAllSubjects(Student[] students) {
+        double avg=0;
+        int sum=0;
+        for(Student s:students)
+        {
+            sum+=s.subjectA+s.subjectB+s.subjectC;
+        }
+        avg=sum/3;
+        return avg;
+    }
 
-    public int subjectATotalByStudents(int[] marks) {}
-    public int subjectBTotalByStudents(int[] marks) {}
-    public int subjectCTotalByStudents(int[] marks) {}
+    public static int subjectATotalByStudents(Student [] students) {
+        int sum=0;
+        for(Student s:students)
+        {
+            sum+=s.subjectA;
+        }
+        return sum;
+    }
+    public static int subjectBTotalByStudents(Student [] students) {
+        int sum=0;
+        for(Student s:students)
+        {
+            sum+=s.subjectB;
+        }
+        return sum;
+    }
+    public static int subjectCTotalByStudents(Student [] students) {
+        int sum=0;
+        for(Student s:students)
+        {
+            sum+=s.subjectC;
+        }
+        return sum;
+    }
 
 
-    public double subjectAAverageByStudents(int[] marks) {}
-    public double subjectBAverageByStudents(int[] marks) {}
-    public double subjectCAverageByStudents(int[] marks) {}
+    public static double subjectAAverageByStudents(Student [] students) {
+        double avg=0;
+        int sum=0;
+        for(Student s:students)
+        {
+            sum +=s.subjectA;
+        }
+        avg=sum/3;
+        return avg;
+    }
+    public static double subjectBAverageByStudents(Student [] students) {
+        double avg=0;
+        int sum=0;
+        for(Student s:students)
+        {
+            sum +=s.subjectB;
+        }
+        avg=sum/3;
+        return avg;
+    }
+    public static double subjectCAverageByStudents(Student [] students) {
+        double avg=0;
+        int sum=0;
+        for(Student s:students)
+        {
+            sum +=s.subjectC;
+        }
+        avg=sum/3;
+        return avg;
+    }
 
+    Student(int x,int y, int z)
+    {
+        subjectA=x;
+        subjectB=y;
+        subjectC=z;
+    }
 }
 
-public class Assignment1Q9 {
+public class Assignment1Q9 extends Student{
 
-    public static void main(String[] args) {}
+    Assignment1Q9(int x, int y, int z) {
+        super(x, y, z);
+    }
+    public static void main(String[] args) {
+        Student s1= new Student(10,20,30);
+        Student s2= new Student(10,20,30);
+        Student s3= new Student(10,20,30);
+        Student s[]={s1,s2,s3};
+        System.out.println(studentsTotalMarksInAllSubjects(s));
+        System.out.println(studentsAverageMarksInAllSubjects(s));
+        System.out.println(subjectATotalByStudents(s));
+        System.out.println(subjectAAverageByStudents(s));
+        System.out.println(subjectBTotalByStudents(s));
+        System.out.println(subjectBAverageByStudents(s));
+        System.out.println(subjectCTotalByStudents(s));
+        System.out.println(subjectCAverageByStudents(s));
+
+
+         
+
+
+    }
 }
