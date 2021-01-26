@@ -1,8 +1,9 @@
 import java.util.*;
 public class Assignment3Q3 {
     public static List traverseReverse(ArrayList aList){
-        Collections.reverse(aList);
-        return aList;
+        Iterator<ArrayList> itr= new Iterator<ArrayList>(){
+
+        };
     }
     public static void main(String[] args) {
         ArrayList<String> aList= new ArrayList<>();
