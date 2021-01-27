@@ -14,6 +14,18 @@ class MovieDetails {
     private String actress;
     private String genre;
 
+    MovieDetails()
+    {
+        Scanner in= new Scanner(System.in);
+        System.out.println("Enter the Movie Name :");
+        movieName=in.nextLine();
+        System.out.println("Enter the Actor Name :");
+        actor=in.nextLine();
+        System.out.println("Enter the Actress Name :");
+        actress=in.nextLine();
+        System.out.println("Enter the Genre Name :");
+        genre=in.nextLine();
+    }
     public String getMovieName() {
         return movieName;
     }
@@ -66,10 +78,10 @@ class movie
 	        int x= in.nextInt();
 	        switch (x) {
             case 1:
-                addMovie(new MovieDetails());
+                addMovie();
                 break;
             case 2:
-                removeMovies(in.nextLine());
+                removeMovies();
                 break;
             case 3:
                 //removeAllMovies();
@@ -84,7 +96,7 @@ class movie
         movieDetails.sort(movieDetailsComparator);
     }
 
-    public static void printSortedMovieList(ArrayList<MovieDetails> movieDetails){
+    public  void printSortedMovieList(ArrayList<MovieDetails> movieDetails){
         Scanner in = new Scanner(System.in);
         sort(movieDetails,sortAccordingly(in.nextLine()));
         for(MovieDetails x:movieDetails)
@@ -93,11 +105,15 @@ class movie
         }
         in.close();
     }
-    public void addMovie(MovieDetails movie) {
+    public void addMovie() {
+        MovieDetails movie = new MovieDetails();
         movieDetails.add(movie);
+        menu();
     }
 
-    public void removeMovies(String movieName) {
+    public void removeMovies() {
+        Scanner in= new Scanner(System.in);
+        String movieName= in.nextLine();
         for(MovieDetails x:movieDetails)
         {
             if(x.getMovieName().equals(movieName))
@@ -134,7 +150,8 @@ class movie
         return gerneList;
     }
 
-    public static Comparator<MovieDetails> sortAccordingly(String sortBy) {
+    public Comparator<MovieDetails> sortAccordingly(String sortBy) {
+        System.out.println("On which basis do you want to sort?");
         if(sortBy.equals("movieName"))
         return new myCompName();
         else if(sortBy.equals("actor"))
@@ -145,7 +162,7 @@ class movie
         return new myCompGenre();
     }
 
-    class myCompName implements Comparator<MovieDetails>{
+    class myCompName<T> implements Comparator<MovieDetails>{
         public int compare(MovieDetails m1, MovieDetails m2)
         {
             return m1.getMovieName().compareTo(m2.getMovieName());
