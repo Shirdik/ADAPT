@@ -1,0 +1,38 @@
+<beans xmlns = "http://www.springframework.org/schema/beans"
+xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation = "http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+<bean id="qList" class="assignments.spring.q2.Question">
+    <property name="questionId" value="1"/>
+    <property name="question" value="Who are your friends?"/>
+    <property name="answersList">
+        <list>
+            <value>Shirdi</value>
+            <value>Chandrika</value>
+            <value>Venkat</value>
+            <value>Chandrika</value>
+            <value>Ganga</value>
+        </list>
+    </property>
+    <property name="answersSet">
+        <set>
+            <value>Shirdi</value>
+            <value>Chandrika</value>
+            <value>Venkat</value>
+            <value>Chandrika</value>
+            <value>Ganga</value>
+        </set>
+    </property>
+    <property name="answersMap">
+        <map>
+            <entry key="1" value="Shirdi"/>
+            <entry key="2" value="Chandrika"/>
+            <entry key="1" value="Shirdi"/>
+            <entry key="3" value="Venkat"/>
+            <entry key="1" value="Shirdi"/>
+            <entry key="4" value="Ganga"/>
+        </map>
+    </property>
+</bean>
+</beans>

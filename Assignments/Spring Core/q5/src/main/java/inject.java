@@ -1,0 +1,6 @@
+
+
+@Inject
+public class inject {
+    
+}
