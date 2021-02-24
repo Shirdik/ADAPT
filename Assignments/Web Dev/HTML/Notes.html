@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -6,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
+    <link rel="stylesheet" href="../CSS/Notes.css">
 </head>
 
 <body>
@@ -143,7 +145,7 @@
 
     <form action="/">
         <p>
-            <label for="username">Enter Username: </label>
+            <label for="username" id="user">Enter Username: </label>
             <input id="username" type="text" placeholder="username">
         </p>
         <p>
@@ -178,11 +180,11 @@
             <!-- Radio Buttons -->
             <label for="size">Select Your Size</label>
             <input type="radio" id="size" name="size" value="s">
-            <label for="s">Small</label>
+            <label for="s" class="size">Small</label>
             <input type="radio" id="size" name="size" alue="m">
-            <label for="m">Medium</label>
+            <label for="m" class="size">Medium</label>
             <input type="radio" id="size" name="size" value="l">
-            <label for="l">Large</label>
+            <label for="l" class="size">Large</label>
         </p>
         <p>
             <!-- Drop down Menu -->
@@ -209,6 +211,11 @@
         </p>
         <p><button>Submit</button></p>
     </form>
+
+
+
+
+    <script src="../JS/notes.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,163 @@
+/*
+CSS--> Cascading Style Sheets
+SYSTAX:
+selector{
+    property:value;
+}
+*/
+
+
+/* COLOUR */
+
+* {
+    color: blue;
+    background-color: bisque;
+}
+
+p {
+    color: rgb(0, 0, 0);
+}
+
+button {
+    color: #08d;
+}
+
+
+/* TEXT */
+
+p,
+ul {
+    text-align: justify;
+    font-weight: bolder;
+    text-decoration: underline wavy;
+    line-height: 2;
+    letter-spacing: 5px;
+    font-size: larger;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* ID 
+SYNTAX:
+
+#id{
+    property:value;
+}
+*/
+
+#user {
+    color: grey;
+}
+
+
+/* CLASS 
+SYNTAX:
+
+.class{
+    property:value;
+}
+*/
+
+.size {
+    background-color: red;
+}
+
+
+/* Descendent  Selector*/
+
+form p {
+    background-color: coral;
+}
+
+
+/* Adjacent Selector */
+
+figure+table {
+    background-color: black;
+}
+
+
+/* Direct Decendent */
+
+tr>th {
+    color: crimson;
+}
+
+
+/* Attribute Selector */
+
+input[type="text"] {
+    background-color: blueviolet;
+}
+
+
+/*
+This is case-sensitive  
+containing --> a[href*="example"]
+ending --> a[href$="example"]
+*/
+
+
+/* PSUEDO CLASS 
+hover-->while hovered on
+active-->When cliked
+checked-->for checked
+:nth-of-type(2n)--> for every nth
+*/
+
+button:hover {
+    background-color: aqua;
+}
+
+
+/* PSUEDO ELEMENTS
+::first-letter
+::first-line
+*/
+
+p::first-letter {
+    font-weight: 1000;
+    font-size: larger;
+}
+
+
+/* SPECIFICITY 
+0       0        0
+ID >  CLASS  > ELEMENT
+/* 
+
+/* 
+BORDER
+border: medium dashed green
+        width | style | color
+*/
+
+
+/*
+DISPLAY
+display: inline, inline-block
+
+ */
+
+
+/* TRANSITIONS
+transistion: Property | Duration | TIming Function | Delay
+*/
+
+
+/* TRANSFORM
+
+
+*/
+
+
+/* FLEX BOX 
+display: flex;
+flex-direction: row;
+justify-content:center;
+flex-wrap:wrap;
+align-items:flex-start;
+allign-self:center;
+flex-grow:1;
+flex-shrink:1;
+*/

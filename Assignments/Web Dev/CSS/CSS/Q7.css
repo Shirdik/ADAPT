@@ -1,0 +1,9 @@
+span {
+    font-weight: bolder;
+}
+
+p {
+    border: 1px solid orange;
+    border-collapse: collapse;
+    outline: 2px dotted green;
+}
