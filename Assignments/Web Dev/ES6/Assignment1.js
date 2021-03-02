@@ -2,7 +2,6 @@
 // ______________________________________________________________
 const c = 20;
 c = 25; // -->This throws an erroe because constant cannot change it's value.
-// ______________________________________________________________
 
 
 // Q2
@@ -13,7 +12,6 @@ function scopeCheck() {
 }
 console.log(x);
 // This also throws an error as the x is not in scope of window, it was just in the function
-// ______________________________________________________________
 
 
 // Q3
@@ -51,8 +49,8 @@ const convert = (names) => {
 // a
 const add = (a, b) => a + b;
 // b
-function userFriends(usename, ...friends) {
-    console.log(usename, friends);
+function userFriends(username, ...friends) {
+    console.log(username, friends);
 }
 // c
 function printCapitalNames(...names) {
