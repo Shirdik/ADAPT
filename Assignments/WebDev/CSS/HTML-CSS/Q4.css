@@ -1,0 +1,39 @@
+#title {
+    text-align: center;
+    background-image: url(../ARTSY/PSX_20200301_185411.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #293241;
+    min-height: 700px;
+    padding-top: 20%;
+    font-family: 'Scope One', serif;
+}
+
+#section-a {
+    background-color: #293241;
+    color: aliceblue;
+    padding: 5%;
+    text-align: center;
+}
+
+#section-b {
+    color: #293241;
+    background-color: aliceblue;
+    padding: 5%;
+    text-align: center;
+}
+
+#section-c,
+#section-e {
+    background-color: #293241;
+    color: aliceblue;
+    padding: 5%;
+    text-align: center;
+}
+
+#section-d {
+    color: #293241;
+    background-color: aliceblue;
+    padding: 5%;
+    text-align: center;
+}

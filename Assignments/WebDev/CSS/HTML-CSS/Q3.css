@@ -1,0 +1,62 @@
+.pimg1 {
+    background-image: url(../ARTSY/IMG_20170819_181743.jpg);
+    min-height: 700px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.ptext1 {
+    text-align: center;
+    padding-top: 250px;
+    font-size: 80px;
+    font-family: 'Pacifico', cursive;
+}
+
+.ptext2 {
+    text-align: center;
+    padding-top: 250px;
+    font-size: 80px;
+    font-family: 'Pacifico', cursive;
+    color: azure;
+}
+
+.ptext3 {
+    text-align: center;
+    padding-top: 250px;
+    font-size: 80px;
+    font-family: 'Pacifico', cursive;
+    color: aquamarine;
+}
+
+#one {
+    background-color: antiquewhite;
+    text-align: center;
+    padding: 10%;
+}
+
+.pimg2 {
+    background-image: url(../ARTSY/PSX_20170922_160438-01.jpeg);
+    min-height: 400px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#two {
+    background-color: #023047;
+    text-align: center;
+    padding: 10%;
+    color: aliceblue;
+}
+
+.pimg3 {
+    background-image: url(../ARTSY/PSX_20171212_155552.jpg);
+    min-height: 400px;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#three {
+    background-color: #83c5be;
+    text-align: center;
+    padding: 10%;
+}

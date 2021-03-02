@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="../CSS/Notes.css">
+</head>
+
+<body>
+
+
+    <!-- PARAGRAPH -->
+    <p>used for paragraph which contains collection of items</p>
+
+
+    <!-- ORDERED LIST -->
+    <ol>
+        <li>tag is used for an ordered
+            <ul>For nested unordered List</ul>
+            <ul>For nested unordered List</ul>
+            <ul>For nested unordered List</ul>
+        </li>
+        <li>tag is used for an ordered</li>
+        <li>tag is used for an ordered</li>
+        <li>tag is used for an ordered</li>
+    </ol>
+
+    <!-- UNORDERED LIST -->
+    <ul>
+        <li>This tag is used for making Unordered List
+            <ol>For Nested Ordered</ol>
+            <ol>For Nested Ordered</ol>
+            <ol>For Nested Ordered</ol>
+            <ol>For Nested Ordered</ol>
+        </li>
+        <li>This tag is used for making Unordered List</li>
+        <li>This tag is used for making Unordered List</li>
+        <li>This tag is used for making Unordered List</li>
+    </ul>
+
+
+    <!-- ANCHOR TAG -->
+    <!-- These are inline elements -->
+    <a href="http://www.google.com">Anchor Tag for web</a>
+    <p><a href="about.html">Anchor Tag for file</a></p>
+
+
+    <!-- IMAGE -->
+    <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBIKQDt.img?h=56&w=193&m=6&q=60&o=f&l=f&f=png" alt="Image from India Today">
+
+    <!-- DIV -->
+    <!-- Generally used to make inline elements to block type -->
+    <div>Used to group elements</div>
+
+    <!-- Span -->
+    <!-- It is an Inline element -->
+    <span>Used to group for granular editing in CSS</span>
+
+    <!-- Horizontal Rule -->
+    <p>Used to make a line break</p>
+    <hr>
+
+    <!-- BREAK -->
+    <p>To line <br> break</p>
+
+    <!-- SUPER SCRIPT  -->
+    <sup>hi</sup>
+
+    <p>Normal</p>
+
+    <!-- SUB -->
+    <sub>for suffix</sub>
+
+    <!-- ENTITIES -->
+    <p>&hearts; These are used for using symbols &spades;</p>
+
+    <!-- SEMANTIC MARKUP -->
+    <!-- Meaningful Markup for Readability-->
+    <main>For main content</main>
+    <nav>for navigation links</nav>
+    <section>used for generic collection</section>
+    <article>used for grouping but mainly for independent elements</article>
+    <aside>used for sidebars</aside>
+    <header>used for headers</header>
+    <footer>used for footers</footer>
+    <figure>used for graphics/images</figure>
+
+
+    <!-- TABLES -->
+    <!-- thead->for Header row -->
+    <!-- tbody-> for body -->
+    <!-- th-> for Headers-->
+    <!-- tr-> for rows -->
+    <!-- td->for div -->
+    <!-- rowspan->to occupy space -->
+    <!-- colspan-> to occupy space in columns -->
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Numbers</th>
+            </tr>
+            <tr>
+                <th>Num1</th>
+                <th>Num2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>One</td>
+                <td>Two</td>
+            </tr>
+            <tr>
+                <td>Three</td>
+                <td>Four</td>
+            </tr>
+            <tr>
+                <td>Five</td>
+                <td>Six</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- FORMS -->
+    <!-- Used to collect input and send to destination -->
+    <!--            INPUT TYPES -->
+    <!-- text-> for normal text -->
+    <!-- password-> for password -->
+    <!-- color-> for color picker-->
+    <!-- number-> for number -->
+    <!-- placeholder-> watermark that helps before entry-->
+    <!-- label-> to link the input with text on page -->
+    <!--            BUTTONS -->
+    <!-- In form a button submits the forms automatically -->
+    <!-- If u wanna assign other functionality by changing it's type -->
+
+    <!-- KEYS -->
+    <!-- id-> for identification -->
+    <!-- name-> for sending data with this name through url -->
+    <!-- typr-> to set the type of the element -->
+
+    <form action="/">
+        <p>
+            <label for="username" id="user">Enter Username: </label>
+            <input id="username" type="text" placeholder="username">
+        </p>
+        <p>
+            <label for="password">Enter password</label>
+            <input type="password" placeholder="password" id="password">
+        </p>
+        <p>
+            <button>Submit</button>
+        </p>
+    </form>
+
+    <form action="https://www.google.com/search">
+        <input type="text" name="q">
+        <button>Google!</button>
+    </form>
+
+    <!-- BUTTONS -->
+    <!-- Radio-> to select only one in a group -->
+    <!-- Checkbox->to select one or more than one -->
+    <!-- select-> Dropdown for selection 
+          selected-> for preselecting a value 
+          First option is selected if selected key is not used
+    -->
+
+    <form action="/buttons">
+        <p>
+            <!-- Checkbox -->
+            <input type="checkbox" name="tos" id="agree">
+            <label for="agree">I Agree!</label>
+        </p>
+        <p>
+            <!-- Radio Buttons -->
+            <label for="size">Select Your Size</label>
+            <input type="radio" id="size" name="size" value="s">
+            <label for="s" class="size">Small</label>
+            <input type="radio" id="size" name="size" alue="m">
+            <label for="m" class="size">Medium</label>
+            <input type="radio" id="size" name="size" value="l">
+            <label for="l" class="size">Large</label>
+        </p>
+        <p>
+            <!-- Drop down Menu -->
+            <label for="pets">Select your pet</label>
+            <select name="pets" id="pets">
+                
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="fish" selected>Fish</option>
+            </select>
+        </p>
+        <p>
+            <!-- Range -->
+            <label for="range">Mood</label>
+            <input type="range" id="range" min="0" max="10" step="2" name=" mode ">
+        </p>
+
+        <p>
+            <!-- Text Area -->
+            <!-- Validations -->
+            <!--  -->
+            <label for="feed">Enter your feed</label>
+            <textarea name="feed" id="feed" cols="30" rows="10" required placeholder="Enter your feed" minlength="20" maxlength="40"></textarea>
+        </p>
+        <p><button>Submit</button></p>
+    </form>
+
+
+
+
+    <script src="../JS/notes.js"></script>
+</body>
+
+</html>

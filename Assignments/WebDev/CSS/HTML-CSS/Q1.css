@@ -1,0 +1,33 @@
+#head {
+    text-align: right;
+    color: aliceblue;
+    padding-top: 600px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid {
+    background-image: url("https://th.bing.com/th/id/Re148c89d569a6b198ddc0d96c670baaf?rik=omNodn%2b9PcXRiw&riu=http%3a%2f%2fmindtheproduct.com%2fwp-content%2fuploads%2f2011%2f10%2fapple-ceo-steve-jobs11.jpg&ehk=KPQlQ2PBuIFGYV%2fQtaaqJ1ExRLpqbzuX7yvCFZBk9nQ%3d&risl=&pid=ImgRaw");
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    min-height: 700px;
+    margin-bottom: 5%;
+}
+
+body {
+    background-color: black;
+    color: azure;
+}
+
+.blockquote {
+    text-align: center;
+}
+
+.blockquote-footer {
+    text-align: right;
+    color: #e5e5e5;
+}
