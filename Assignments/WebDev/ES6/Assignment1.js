@@ -92,7 +92,7 @@ class Account {
         this.name = name;
         this.balance = balance;
         this.type = type;
-        bal += balance;
+        Account.bal += balance;
     }
 }
 class SavingsAccount extends Account {
