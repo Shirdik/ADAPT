@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body class="container">
+    <h1>Airline Passsengers</h1>
+    <div *ngFor='let passenger of passengers let i=index'>
+        <span class="status" [style.backgroundColor]="(passenger.checkIn?'green':'red')"></span> {{i+1}}:{{passenger.name}}
+        <p>{{passenger | json}}</p>
+        <div class="date">Check in date:{{passenger.checkedInDate?(passenger.checkedInDate |date:'yMMMd'|uppercase): 'Not Checked In' }}</div>
+    </div>
+
+
+    <!-- <h1>Airline Passsengers</h1>
+    <ng-template ngFor let-passenger let-i='index' [ngForOf]='passengers'>
+        <span class='status' [class.checked-in]='passenger.checkIn'></span>
+        <div>{{i+1}}:{{passenger.name}}</div>
+    </ng-template>
+
+
+    <h1>Airline Passsengers</h1>
+    <ng-template ngFor let-passenger let-i='index' [ngForOf]='passengers'>
+        <span class='status' [ngClass]="{
+          'checked-in':passenger.checkIn,
+          'checked-out':!passenger.checkIn
+        }"></span>
+        <div>{{i+1}}:{{passenger.name}}</div>
+    </ng-template> -->
+</body>
+
+</html>
