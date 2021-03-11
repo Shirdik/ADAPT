@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import movie.info.models.Movie;
-
 @RestController
 @RequestMapping("/movie")
 public class MovieResource {
