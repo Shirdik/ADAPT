@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserModel {
 
     @Id
-    private int _id;
+    private int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -21,7 +21,7 @@ public class UserModel {
     }
 
     public int getId() {
-        return _id;
+        return id;
     }
 
     public String getUsername() {
@@ -91,7 +91,7 @@ public class UserModel {
     @Override
     public String toString() {
         return "User [active=" + active + ", authority=" + authority + ", email=" + email + ", firstName=" + firstName
-                + ", id=" + _id + ", lastName=" + lastName + ", password=" + password + ", rewards=" + rewards
+                + ", id=" + id + ", lastName=" + lastName + ", password=" + password + ", rewards=" + rewards
                 + ", username=" + username + "]";
     }
 

@@ -4,6 +4,7 @@ public class AuthenticationRequest {
 
     private String username;
     private String password;
+    private String authority;
 
     public String getUsername() {
         return username;
@@ -19,6 +20,17 @@ public class AuthenticationRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public AuthenticationRequest() {
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 
 }
