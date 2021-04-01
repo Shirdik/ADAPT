@@ -1,4 +1,4 @@
-package login.auth.configuration;
+package login.auth.Configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import login.auth.Service.*;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    UserService userService;
+    MyUserDetailsService userService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

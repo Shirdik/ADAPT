@@ -8,12 +8,12 @@ public class UserModel {
 
     @Id
     private int id;
-    private String username;
+    private String userName;
     private String firstName;
     private String lastName;
     private String password;
     private String email;
-    private String authority;
+    private String roles;
     private Boolean active;
     private Double rewards;
 
@@ -25,11 +25,11 @@ public class UserModel {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userName = username;
     }
 
     public String getFirstName() {
@@ -64,14 +64,6 @@ public class UserModel {
         this.email = email;
     }
 
-    public String getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
-
     public Boolean getActive() {
         return active;
     }
@@ -90,9 +82,17 @@ public class UserModel {
 
     @Override
     public String toString() {
-        return "User [active=" + active + ", authority=" + authority + ", email=" + email + ", firstName=" + firstName
+        return "User [active=" + active + ", authority=" + roles + ", email=" + email + ", firstName=" + firstName
                 + ", id=" + id + ", lastName=" + lastName + ", password=" + password + ", rewards=" + rewards
-                + ", username=" + username + "]";
+                + ", username=" + userName + "]";
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
 }

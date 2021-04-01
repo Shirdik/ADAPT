@@ -26,24 +26,30 @@ public class homeController {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    // Home
     @RequestMapping("/")
     public String home() {
         return "<h1>Welcome!</h1>";
     }
 
+    // User Page
     @RequestMapping("/user")
     public String user() {
         return "<h1>Welcome user!</h1>";
     }
 
+    // Admin Page
     @RequestMapping("/admin")
     public String admin() {
         return "<h1>Welcome admin!</h1>";
     }
 
+    // Repositroy
     @Autowired
     private UserRepository repository;
 
+    // Sign In Page
+    // Let's the user to sign in
     @PostMapping("/signIn")
     public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest auth) {
 
@@ -58,22 +64,30 @@ public class homeController {
         return ResponseEntity.ok("Authentication Succesful! " + username);
     }
 
+    // Sign Up Page
+    // To create new user and add it to the database
     @PostMapping("/signUp")
     public ResponseEntity<?> signUp(@RequestBody UserModel user) {
+
         repository.save(user);
         return ResponseEntity.ok("Added User to the Database with id: " + user.getId());
+
     }
 
+    // Users List
+    // List of all users in the database
     @GetMapping("/allUsers")
     public List<UserModel> getAllUsers() {
         return repository.findAll();
     }
 
+    // Find the user by id
     @GetMapping("/allUsers/{id}")
     public Optional<UserModel> getUser(@PathVariable int id) {
         return repository.findById(id);
     }
 
+    // To delete by id
     @GetMapping("/delete/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable int id) throws Exception {
         repository.deleteById(id);
