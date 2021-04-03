@@ -12,4 +12,16 @@ public class AuthenticationResponse {
         this.response = response;
     }
 
+    @Override
+    public String toString() {
+        return "AuthenticationResponse [response=" + response + "]";
+    }
+
+    public AuthenticationResponse(String response) {
+        this.response = response;
+    }
+
+    public AuthenticationResponse() {
+    }
+
 }

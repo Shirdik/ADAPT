@@ -1,4 +1,4 @@
-package login.auth.Models;
+package deals.dealsmanager.Models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

@@ -3,7 +3,6 @@ package login.auth.Controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,11 +11,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import login.auth.Models.AuthenticationRequest;
+import login.auth.Models.AuthenticationResponse;
 import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
 
@@ -50,7 +51,7 @@ public class homeController {
 
     // Sign In Page
     // Let's the user to sign in
-    @PostMapping("/signIn")
+    @PostMapping("/logIn")
     public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest auth) {
 
         String username = auth.getUsername();
@@ -59,9 +60,9 @@ public class homeController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.ok("Authentication Failed! " + e);
+            return ResponseEntity.ok(new AuthenticationResponse("Authentication Failed! " + e));
         }
-        return ResponseEntity.ok("Authentication Succesful! " + username);
+        return ResponseEntity.ok(new AuthenticationResponse("Authentication Succesful! " + username));
     }
 
     // Sign Up Page
@@ -70,9 +71,15 @@ public class homeController {
     public ResponseEntity<?> signUp(@RequestBody UserModel user) {
 
         repository.save(user);
-        return ResponseEntity.ok("Added User to the Database with id: " + user.getId());
+        return ResponseEntity.ok(new AuthenticationResponse("Added User to the Database with id: " + user.getId()));
 
     }
+
+    // @PutMapping("/updateUser")
+    // public ResponseEntity<?> updateUser(@RequestBody UserModel user) {
+    // UserModel foundUser = repository.findByUserName(user.getUsername());
+
+    // }
 
     // Users List
     // List of all users in the database
@@ -91,6 +98,6 @@ public class homeController {
     @GetMapping("/delete/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable int id) throws Exception {
         repository.deleteById(id);
-        return ResponseEntity.ok("Added User to the Database with id: " + id);
+        return ResponseEntity.ok(new AuthenticationResponse("Deleted User from the Database with id: " + id));
     }
 }

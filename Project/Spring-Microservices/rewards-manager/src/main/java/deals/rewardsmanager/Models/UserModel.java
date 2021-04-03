@@ -1,4 +1,4 @@
-package login.auth.Models;
+package deals.rewardsmanager.Models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -93,23 +93,6 @@ public class UserModel {
 
     public void setRoles(String roles) {
         this.roles = roles;
-    }
-
-    public UserModel(int id, String userName, String firstName, String lastName, String password, String email,
-            String roles, Boolean active, double rewards) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.roles = roles;
-        this.active = active;
-        this.rewards = rewards;
-    }
-
-    public UserModel(int id) {
-        this.id = id;
     }
 
 }
