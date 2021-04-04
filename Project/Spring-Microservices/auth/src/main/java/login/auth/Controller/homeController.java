@@ -3,6 +3,8 @@ package login.auth.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.ws.rs.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -99,5 +101,36 @@ public class homeController {
     public ResponseEntity<?> deleteUser(@PathVariable int id) throws Exception {
         repository.deleteById(id);
         return ResponseEntity.ok(new AuthenticationResponse("Deleted User from the Database with id: " + id));
+    }
+
+    // Update User
+    @PutMapping("/ediUser/{id}")
+    public UserModel editUser(@PathVariable int id, @RequestBody UserModel updateUser) {
+
+        UserModel user = repository.findById(id).orElseThrow();
+        user.setUserName(updateUser.getUserName());
+        user.setFirstName(updateUser.getFirstName());
+        user.setPassword(updateUser.getPassword());
+        user.setEmail(updateUser.getEmail());
+        repository.save(user);
+        return user;
+    }
+
+    // Add Deal
+    @PutMapping("/addDealId/{userId}/{dealId}")
+    public List<Integer> addDealId(@PathVariable int userId, @PathVariable int dealId) {
+        UserModel user = repository.findById(userId).orElseThrow();
+        user.addDealId(dealId);
+        return user.getDealIds();
+
+    }
+
+    // Add Coupon
+    @PutMapping("/addCouponId/{userId}/{dealId}")
+    public List<Integer> addCouponId(@PathVariable int userId, @PathVariable int couponId) {
+        UserModel user = repository.findById(userId).orElseThrow();
+        user.addCouponId(couponId);
+        return user.getCouponIds();
+
     }
 }

@@ -14,7 +14,7 @@ public class DealsModel {
     private String description;
     private String imageurl;
     private String link;
-    private List<UserModel> users;
+    private List<Integer> userIds;
     private double rewards;
     private String Category;
 
@@ -54,32 +54,24 @@ public class DealsModel {
         this.link = link;
     }
 
-    public List<UserModel> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UserModel> users) {
-        this.users = users;
-    }
-
     public DealsModel() {
     }
 
-    public DealsModel(int id, String title, String description, String imageurl, String link, List<UserModel> users) {
+    public DealsModel(int id, String title, String description, String imageurl, String link, List<Integer> users) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.imageurl = imageurl;
         this.link = link;
-        this.users = users;
+        this.userIds = users;
     }
 
     public DealsModel(int id) {
         this.id = id;
     }
 
-    public void addUser(UserModel user) {
-        users.add(user);
+    public void addUserId(int userId) {
+        this.userIds.add(userId);
     }
 
     public double getRewards() {
@@ -96,6 +88,14 @@ public class DealsModel {
 
     public void setCategory(String category) {
         Category = category;
+    }
+
+    public List<Integer> getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(List<Integer> userIds) {
+        this.userIds = userIds;
     }
 
 }

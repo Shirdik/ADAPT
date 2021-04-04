@@ -14,7 +14,7 @@ public class CouponsModel {
     private String description;
     private String imageurl;
     private String link;
-    private List<UserModel> users;
+    private List<Integer> userIds;
     private double rewards;
     private String Category;
 
@@ -61,16 +61,8 @@ public class CouponsModel {
         this.link = link;
     }
 
-    public List<UserModel> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<UserModel> users) {
-        this.users = users;
-    }
-
-    public void addUser(UserModel user) {
-        this.users.add(user);
+    public void addUserId(int userId) {
+        this.userIds.add(userId);
     }
 
     public double getRewards() {
@@ -89,16 +81,24 @@ public class CouponsModel {
         Category = category;
     }
 
-    public CouponsModel(int id, String title, String description, String imageurl, String link, List<UserModel> users,
+    public CouponsModel(int id, String title, String description, String imageurl, String link, List<Integer> userIds,
             double rewards, String category) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.imageurl = imageurl;
         this.link = link;
-        this.users = users;
+        this.userIds = userIds;
         this.rewards = rewards;
         Category = category;
+    }
+
+    public List<Integer> getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(List<Integer> userIds) {
+        this.userIds = userIds;
     }
 
 }

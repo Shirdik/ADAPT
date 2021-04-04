@@ -22,12 +22,13 @@ public class UserDealsContoller extends DealsService {
     public ResponseEntity<?> grabDeal(@PathVariable int userId, @PathVariable int dealId) {
         if (isValidUser(userId)) {
 
-            DealsModel deal = dealsRepository.findById(userId).orElse(new DealsModel(0));
-            if (deal.getId() == 0) {
-                return ResponseEntity.ok("No Deal Found! with id:" + dealId);
-            }
+            DealsModel deal = dealsRepository.findById(dealId).orElseThrow();
             // Adding User to the Deals
-            deal.addUser(userModelServer(userId));
+            if (dealsRepository.findById(userId) == null)
+                deal.addUserId(userId);
+            else
+                return ResponseEntity.ok("UserId: " + userId + "is already in the List");
+
             dealsRepository.save(deal);
             // Adding Rewards in the User Account
             if (rewardsAdder(userId, deal.getRewards()))

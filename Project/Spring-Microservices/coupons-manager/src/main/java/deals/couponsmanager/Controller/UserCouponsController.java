@@ -2,6 +2,7 @@ package deals.couponsmanager.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,22 +20,20 @@ public class UserCouponsController extends CouponsService {
     CouponsRepository couponsRepository;
 
     @PutMapping("/grabCoupon/{userId}/{couponId}")
-    public ResponseEntity<?> grabCoupon(@PathVariable int couponId, @PathVariable int userId) {
+    public ResponseEntity<?> grabCoupon(@PathVariable int couponId, @PathVariable int userId)
+            throws UsernameNotFoundException {
         if (isValidUser(userId)) {
-
-            CouponsModel coupon = couponsRepository.findById(couponId).orElse(new CouponsModel(0));
-            if (coupon.getId() == 0) {
-                return ResponseEntity.ok("No Coupon Found! with id:" + couponId);
-            }
+            CouponsModel coupon = couponsRepository.findById(couponId).orElseThrow();
             // Adding User to the Coupon
-            coupon.addUser(userModelServer(userId));
+            coupon.addUserId(userId);
             couponsRepository.save(coupon);
             // Adding Rewards in the User Account
-            if (rewardsReducer(userId, coupon.getRewards()))
-                return ResponseEntity.ok("Coupon Added!:" + couponId);
+            rewardsReducer(userId, coupon.getRewards());
+            return ResponseEntity.ok("Coupon Added!:" + couponId);
 
             // If Rewards are not added in the User Account
-            return ResponseEntity.ok("Couldn't reduce Rewards in the User Account with id:" + couponId);
+            // return ResponseEntity.ok("Couldn't reduce Rewards in the User Account with
+            // id:" + couponId);
 
         }
         // If the User id is not valid or the user is not found!

@@ -1,12 +1,9 @@
 package deals.rewardsmanager.Models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
-@Document(collection = "user")
 public class UserModel {
 
-    @Id
     private int id;
     private String userName;
     private String firstName;
@@ -16,6 +13,8 @@ public class UserModel {
     private String roles;
     private Boolean active;
     private Double rewards;
+    private List<Integer> dealIds;
+    private List<Integer> couponIds;
 
     public UserModel() {
     }
@@ -95,4 +94,52 @@ public class UserModel {
         this.roles = roles;
     }
 
+    public UserModel(int id, String userName, String firstName, String lastName, String password, String email,
+            String roles, Boolean active, double rewards) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.roles = roles;
+        this.active = active;
+        this.rewards = rewards;
+    }
+
+    public UserModel(int id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public List<Integer> getDealIds() {
+        return dealIds;
+    }
+
+    public void setDealIds(List<Integer> dealIds) {
+        this.dealIds = dealIds;
+    }
+
+    public List<Integer> getCouponIds() {
+        return couponIds;
+    }
+
+    public void setCouponIds(List<Integer> couponIds) {
+        this.couponIds = couponIds;
+    }
+
+    public void addDealId(int dealId) {
+        this.dealIds.add(dealId);
+    }
+
+    public void addCouponId(int couponId) {
+        this.couponIds.add(couponId);
+    }
 }
