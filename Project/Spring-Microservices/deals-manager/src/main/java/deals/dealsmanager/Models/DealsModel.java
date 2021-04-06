@@ -1,6 +1,6 @@
 package deals.dealsmanager.Models;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,10 +14,24 @@ public class DealsModel {
     private String description;
     private String imageurl;
     private String link;
-    private List<Integer> userIds;
+    private Set<Integer> userIds;
     private double rewards;
-    private String Category;
+    private Set<Category> Category;
 
+    // Methods
+    public void addUserId(int userId) {
+        this.userIds.add(userId);
+    }
+
+    public void addCategory(Set<Category> categories) {
+        this.Category.addAll(categories);
+    }
+
+    // Constructor
+    public DealsModel() {
+    }
+
+    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -54,24 +68,12 @@ public class DealsModel {
         this.link = link;
     }
 
-    public DealsModel() {
+    public Set<Integer> getUserIds() {
+        return userIds;
     }
 
-    public DealsModel(int id, String title, String description, String imageurl, String link, List<Integer> users) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.imageurl = imageurl;
-        this.link = link;
-        this.userIds = users;
-    }
-
-    public DealsModel(int id) {
-        this.id = id;
-    }
-
-    public void addUserId(int userId) {
-        this.userIds.add(userId);
+    public void setUserIds(Set<Integer> userIds) {
+        this.userIds = userIds;
     }
 
     public double getRewards() {
@@ -82,20 +84,12 @@ public class DealsModel {
         this.rewards = rewards;
     }
 
-    public String getCategory() {
+    public Set<Category> getCategory() {
         return Category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Set<Category> category) {
         Category = category;
-    }
-
-    public List<Integer> getUserIds() {
-        return userIds;
-    }
-
-    public void setUserIds(List<Integer> userIds) {
-        this.userIds = userIds;
     }
 
 }

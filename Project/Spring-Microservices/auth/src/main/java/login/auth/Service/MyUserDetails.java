@@ -1,4 +1,4 @@
-package login.auth.Models;
+package login.auth.Service;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
 
 @Service

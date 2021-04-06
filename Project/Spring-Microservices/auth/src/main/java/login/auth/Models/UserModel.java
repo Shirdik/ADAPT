@@ -1,6 +1,6 @@
 package login.auth.Models;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,7 +10,7 @@ public class UserModel {
 
     @Id
     private int id;
-    private String userName;
+    private String username;
     private String firstName;
     private String lastName;
     private String password;
@@ -18,8 +18,8 @@ public class UserModel {
     private String roles;
     private Boolean active;
     private Double rewards;
-    private List<Integer> dealIds;
-    private List<Integer> couponIds;
+    private Set<Integer> dealIds;
+    private Set<Integer> couponIds;
 
     public UserModel() {
     }
@@ -29,11 +29,11 @@ public class UserModel {
     }
 
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.userName = username;
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -84,13 +84,6 @@ public class UserModel {
         this.rewards = rewards;
     }
 
-    @Override
-    public String toString() {
-        return "User [active=" + active + ", authority=" + roles + ", email=" + email + ", firstName=" + firstName
-                + ", id=" + id + ", lastName=" + lastName + ", password=" + password + ", rewards=" + rewards
-                + ", username=" + userName + "]";
-    }
-
     public String getRoles() {
         return roles;
     }
@@ -99,44 +92,31 @@ public class UserModel {
         this.roles = roles;
     }
 
-    public UserModel(int id, String userName, String firstName, String lastName, String password, String email,
-            String roles, Boolean active, double rewards) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.roles = roles;
-        this.active = active;
-        this.rewards = rewards;
-    }
-
     public UserModel(int id) {
         this.id = id;
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
-    public List<Integer> getDealIds() {
+    public Set<Integer> getDealIds() {
         return dealIds;
     }
 
-    public void setDealIds(List<Integer> dealIds) {
+    public void setDealIds(Set<Integer> dealIds) {
         this.dealIds = dealIds;
     }
 
-    public List<Integer> getCouponIds() {
+    public Set<Integer> getCouponIds() {
         return couponIds;
     }
 
-    public void setCouponIds(List<Integer> couponIds) {
+    public void setCouponIds(Set<Integer> couponIds) {
         this.couponIds = couponIds;
     }
 

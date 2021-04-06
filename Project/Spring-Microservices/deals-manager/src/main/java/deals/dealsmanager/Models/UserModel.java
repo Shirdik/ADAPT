@@ -1,6 +1,6 @@
 package deals.dealsmanager.Models;
 
-import java.util.List;
+import java.util.Set;
 
 public class UserModel {
 
@@ -13,8 +13,8 @@ public class UserModel {
     private String roles;
     private Boolean active;
     private Double rewards;
-    private List<Integer> dealIds;
-    private List<Integer> couponIds;
+    private Set<Integer> dealIds;
+    private Set<Integer> couponIds;
 
     public UserModel() {
     }
@@ -94,19 +94,6 @@ public class UserModel {
         this.roles = roles;
     }
 
-    public UserModel(int id, String userName, String firstName, String lastName, String password, String email,
-            String roles, Boolean active, double rewards) {
-        this.id = id;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.roles = roles;
-        this.active = active;
-        this.rewards = rewards;
-    }
-
     public UserModel(int id) {
         this.id = id;
     }
@@ -119,19 +106,19 @@ public class UserModel {
         this.userName = userName;
     }
 
-    public List<Integer> getDealIds() {
+    public Set<Integer> getDealIds() {
         return dealIds;
     }
 
-    public void setDealIds(List<Integer> dealIds) {
+    public void setDealIds(Set<Integer> dealIds) {
         this.dealIds = dealIds;
     }
 
-    public List<Integer> getCouponIds() {
+    public Set<Integer> getCouponIds() {
         return couponIds;
     }
 
-    public void setCouponIds(List<Integer> couponIds) {
+    public void setCouponIds(Set<Integer> couponIds) {
         this.couponIds = couponIds;
     }
 

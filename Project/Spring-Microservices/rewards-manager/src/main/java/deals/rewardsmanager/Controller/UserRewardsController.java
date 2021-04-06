@@ -5,10 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import deals.rewardsmanager.Models.RewardsModel;
+import deals.rewardsmanager.Models.RewardsRequest;
 import deals.rewardsmanager.Service.RewardsRepository;
 
 @RestController
@@ -18,29 +20,28 @@ public class UserRewardsController {
     @Autowired
     RewardsRepository rewardsRepository;
 
-    @PutMapping("/addRewards/{id}/{rewards}")
-    public ResponseEntity<?> addRewards(@PathVariable int id, @PathVariable double rewards)
-            throws UsernameNotFoundException {
+    @PutMapping("/addRewards")
+    public ResponseEntity<?> addRewards(@RequestBody RewardsRequest rewardsRequest) throws UsernameNotFoundException {
 
-        RewardsModel user = rewardsRepository.findById(id).orElseThrow();
+        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUserId()).orElseThrow();
 
-        user.setRewards(user.getRewards() + rewards);
+        user.setRewards(user.getRewards() + rewardsRequest.getRewards());
 
         rewardsRepository.save(user);
         return ResponseEntity.ok("Added to the Rewards:" + user.getRewards());
 
     }
 
-    @PutMapping("/reduceRewards/{id}/{rewards}")
-    public ResponseEntity<?> reduceRewards(@PathVariable double rewards, @PathVariable int id)
+    @PutMapping("/reduceRewards/")
+    public ResponseEntity<?> reduceRewards(@RequestBody RewardsRequest rewardsRequest)
             throws UsernameNotFoundException {
 
-        RewardsModel user = rewardsRepository.findById(id).orElseThrow();
+        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUserId()).orElseThrow();
 
-        if (user.getRewards() < rewards)
+        if (user.getRewards() < rewardsRequest.getRewards())
             return ResponseEntity.ok("Cannot Reduce due to insufficent Rewards");
 
-        user.setRewards(user.getRewards() - rewards);
+        user.setRewards(user.getRewards() - rewardsRequest.getRewards());
 
         rewardsRepository.save(user);
         return ResponseEntity.ok("Removed from the Rewards:" + user.getRewards());

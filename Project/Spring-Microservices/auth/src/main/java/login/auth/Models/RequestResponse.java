@@ -1,6 +1,6 @@
 package login.auth.Models;
 
-public class AuthenticationResponse {
+public class RequestResponse {
 
     private String response;
 
@@ -17,11 +17,11 @@ public class AuthenticationResponse {
         return "AuthenticationResponse [response=" + response + "]";
     }
 
-    public AuthenticationResponse(String response) {
+    public RequestResponse(String response) {
         this.response = response;
     }
 
-    public AuthenticationResponse() {
+    public RequestResponse() {
     }
 
 }

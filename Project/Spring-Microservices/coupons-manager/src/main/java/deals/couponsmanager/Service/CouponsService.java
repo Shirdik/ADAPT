@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import deals.couponsmanager.Models.RewardsRequest;
 import deals.couponsmanager.Models.UserModel;
 
 @Service
@@ -21,6 +22,6 @@ public class CouponsService {
     }
 
     public void rewardsReducer(int userId, double rewards) {
-        restTemplate.getForObject("https://rewards-application/user/" + userId + "/" + rewards, ResponseEntity.class);
+        restTemplate.put("https://rewards-manager/user/reduceRewards", new RewardsRequest(userId, rewards));
     }
 }

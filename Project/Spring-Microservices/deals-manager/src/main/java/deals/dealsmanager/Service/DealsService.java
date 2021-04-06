@@ -1,12 +1,10 @@
 package deals.dealsmanager.Service;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import deals.dealsmanager.Models.RewardsRequest;
 import deals.dealsmanager.Models.UserModel;
 
 @Service
@@ -17,7 +15,6 @@ public class DealsService {
 
     public boolean isValidUser(int id) {
         UserModel user = restTemplate.getForObject("http://auth-application/allUsers/" + id, UserModel.class);
-
         return (user != null);
     }
 
@@ -25,9 +22,9 @@ public class DealsService {
         return restTemplate.getForObject("http://auth-application/allUsers/" + id, UserModel.class);
     }
 
-    public boolean rewardsAdder(int userId, double rewards) {
-        restTemplate.getForObject("http://rewards-manager//user/addRewards" + userId + "/" + rewards,
-                ResponseEntity.class);
-        return true;
+    public void rewardsAdder(int userId, double rewards) {
+        restTemplate.put("https://rewards-manager/user/addRewards", new RewardsRequest(userId, rewards));
+
     }
+
 }

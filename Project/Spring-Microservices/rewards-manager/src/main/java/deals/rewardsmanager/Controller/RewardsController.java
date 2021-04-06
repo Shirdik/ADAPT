@@ -19,19 +19,20 @@ public class RewardsController {
     // Home
     @RequestMapping("/")
     public String home() {
-        return "<h1>Welcome!</h1>";
+        return "<h1>Welcome to Rewards-Manager!</h1>";
     }
 
     // User Page
     @RequestMapping("/user")
     public String user() {
-        return "<h1>Welcome user!</h1>";
+
+        return "<h1>Welcome to Rewards-Manager user!</h1>";
     }
 
     // Admin Page
     @RequestMapping("/admin")
     public String admin() {
-        return "<h1>Welcome admin!</h1>";
+        return "<h1>Welcome to Rewards-Manager admin!</h1>";
     }
 
     @PostMapping("/addUser")
