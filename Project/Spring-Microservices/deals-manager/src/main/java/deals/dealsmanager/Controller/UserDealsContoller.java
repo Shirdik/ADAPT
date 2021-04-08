@@ -33,6 +33,7 @@ public class UserDealsContoller extends DealsService {
             if (!deal.getUserIds().contains(userId)) {
                 deal.addUserId(userId);
                 restTemplate.put("https://auth-application/user/addDealId", new DealAdder(userId, dealId));
+                rewardsAdder(userId, deal.getRewards());
 
             } else
                 return ResponseEntity.ok(new RequestResponse(userId + "is already in the List"));
@@ -40,7 +41,6 @@ public class UserDealsContoller extends DealsService {
             dealsRepository.save(deal);
 
             // Adding Rewards in the User Account
-            rewardsAdder(userId, deal.getRewards());
             return ResponseEntity.ok(new RequestResponse("Deal Added!:" + dealId));
         }
         // If the User id is not valid or the user is not found!

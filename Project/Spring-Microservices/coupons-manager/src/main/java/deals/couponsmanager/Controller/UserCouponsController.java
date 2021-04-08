@@ -36,12 +36,12 @@ public class UserCouponsController extends CouponsService {
                 // Adding User to the Coupon
                 coupon.addUserId(userId);
                 restTemplate.put("https://auth-application/user/addCouponId", new CouponAdder(userId, couponId));
+                rewardsReducer(userId, coupon.getRewards());
 
             } else
                 return ResponseEntity.ok(new RequestResponse("UserId: " + userId + "is already in the List"));
             couponsRepository.save(coupon);
             // Adding Rewards in the User Account
-            rewardsReducer(userId, coupon.getRewards());
             return ResponseEntity.ok("Coupon Added!:" + couponId);
 
             // If Rewards are not added in the User Account
