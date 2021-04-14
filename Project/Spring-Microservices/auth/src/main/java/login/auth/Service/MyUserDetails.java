@@ -12,13 +12,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import login.auth.Models.UserModel;
-import login.auth.Service.UserRepository;
 
 @Service
 public class MyUserDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
-    private String userName;
+    private String username;
     private String password;
     private boolean active;
     private List<GrantedAuthority> authorities;
@@ -27,7 +26,7 @@ public class MyUserDetails implements UserDetails {
     UserRepository userRepository;
 
     public MyUserDetails(UserModel user) {
-        this.userName = user.getUsername();
+        this.username = user.getUsername();
         this.password = user.getPassword();
         this.active = user.getActive();
         this.authorities = Arrays.stream(user.getRoles().split(",")).map(SimpleGrantedAuthority::new)
@@ -46,7 +45,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override

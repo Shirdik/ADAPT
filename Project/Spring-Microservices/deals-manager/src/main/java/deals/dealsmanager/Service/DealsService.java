@@ -18,10 +18,6 @@ public class DealsService {
         return (user != null);
     }
 
-    public UserModel userModelServer(int id) {
-        return restTemplate.getForObject("http://auth-application/allUsers/" + id, UserModel.class);
-    }
-
     public void rewardsAdder(int userId, double rewards) {
         restTemplate.put("https://rewards-manager/user/addRewards", new RewardsRequest(userId, rewards));
 
