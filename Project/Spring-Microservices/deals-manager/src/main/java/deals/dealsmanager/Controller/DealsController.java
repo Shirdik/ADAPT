@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import deals.dealsmanager.Models.DealsModel;
-import deals.dealsmanager.Models.UserModel;
+// import deals.dealsmanager.Models.UserModel;
 import deals.dealsmanager.Service.DealsRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -50,15 +50,16 @@ public class DealsController {
     }
 
     // Get Deal by Id
-    @GetMapping("/allDeals/{id}")
-    public Optional<DealsModel> allDeal(@PathVariable int id) {
-        return dealsRepository.findById(id);
+    @GetMapping("/allDeals/{dealCode}")
+    public Optional<DealsModel> allDeal(@PathVariable String dealCode) {
+        return dealsRepository.findById(dealCode);
     }
 
     // Test for Eureka Server-Client Connection!
-    @RequestMapping("/authapp")
-    public UserModel authapp() {
-        return restTemplate.getForObject("http://auth-application/admin/allUsers/1", UserModel.class);
-    }
+    // @RequestMapping("/authapp")
+    // public UserModel authapp() {
+    // return restTemplate.getForObject("http://auth-application/admin/allUsers/1",
+    // UserModel.class);
+    // }
 
 }

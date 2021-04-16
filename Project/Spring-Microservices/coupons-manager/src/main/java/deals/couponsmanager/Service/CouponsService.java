@@ -1,11 +1,10 @@
 package deals.couponsmanager.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import deals.couponsmanager.Models.RewardsRequest;
+import deals.couponsmanager.dto.RewardsRequest;
 import deals.couponsmanager.Models.UserModel;
 
 @Service
@@ -14,14 +13,14 @@ public class CouponsService {
     @Autowired
     RestTemplate restTemplate;
 
-    public boolean isValidUser(int id) {
+    public boolean isValidUser(String username) {
 
-        if (restTemplate.getForObject("https://auth-application/allUsers/" + id, UserModel.class) == null)
+        if (restTemplate.getForObject("https://auth-application/allUsers/" + username, UserModel.class) == null)
             return false;
         return true;
     }
 
-    public void rewardsReducer(int userId, double rewards) {
-        restTemplate.put("https://rewards-manager/user/reduceRewards", new RewardsRequest(userId, rewards));
+    public void rewardsReducer(String username, double rewards) {
+        restTemplate.put("https://rewards-manager/user/reduceRewards", new RewardsRequest(username, rewards));
     }
 }

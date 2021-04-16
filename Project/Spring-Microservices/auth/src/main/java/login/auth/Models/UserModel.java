@@ -1,5 +1,6 @@
 package login.auth.Models;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserModel {
 
     @Id
-    private int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -17,15 +17,14 @@ public class UserModel {
     private String email;
     private String roles;
     private Boolean active;
-    private Double rewards;
-    private Set<Integer> dealIds;
-    private Set<Integer> couponIds;
+    private Set<String> dealCodes;
+    private Set<String> couponCodes;
 
     public UserModel() {
-    }
-
-    public int getId() {
-        return id;
+        this.roles = "ROLE_USER";
+        this.active = true;
+        this.dealCodes = Collections.emptySet();
+        this.couponCodes = Collections.emptySet();
     }
 
     public String getUsername() {
@@ -76,24 +75,12 @@ public class UserModel {
         this.active = active;
     }
 
-    public Double getRewards() {
-        return rewards;
-    }
-
-    public void setRewards(Double rewards) {
-        this.rewards = rewards;
-    }
-
     public String getRoles() {
         return roles;
     }
 
     public void setRoles(String roles) {
         this.roles = roles;
-    }
-
-    public UserModel(int id) {
-        this.id = id;
     }
 
     public String getUserName() {
@@ -104,27 +91,27 @@ public class UserModel {
         this.username = userName;
     }
 
-    public Set<Integer> getDealIds() {
-        return dealIds;
+    public void addDealCode(String dealId) {
+        this.dealCodes.add(dealId);
     }
 
-    public void setDealIds(Set<Integer> dealIds) {
-        this.dealIds = dealIds;
+    public void addCouponCode(String couponId) {
+        this.couponCodes.add(couponId);
     }
 
-    public Set<Integer> getCouponIds() {
-        return couponIds;
+    public Set<String> getDealCodes() {
+        return dealCodes;
     }
 
-    public void setCouponIds(Set<Integer> couponIds) {
-        this.couponIds = couponIds;
+    public void setDealCodes(Set<String> dealCodes) {
+        this.dealCodes = dealCodes;
     }
 
-    public void addDealId(int dealId) {
-        this.dealIds.add(dealId);
+    public Set<String> getCouponCodes() {
+        return couponCodes;
     }
 
-    public void addCouponId(int couponId) {
-        this.couponIds.add(couponId);
+    public void setCouponCodes(Set<String> couponCodes) {
+        this.couponCodes = couponCodes;
     }
 }

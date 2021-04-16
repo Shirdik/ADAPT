@@ -76,17 +76,18 @@ public class AuthController {
     public ResponseEntity<?> signUp(@RequestBody UserModel user) {
 
         userRepository.save(user);
-        restTemplate.postForLocation("https://rewards-manager/addUser", new RewardsModel(user.getId(), 20.00),
+        restTemplate.postForLocation("https://rewards-manager/addUser", new RewardsModel(user.getUsername(), 20.00),
                 ResponseEntity.class);
-        return ResponseEntity.ok(new RequestResponse("Added User to the Database with id: " + user.getId()));
+        return ResponseEntity
+                .ok(new RequestResponse("Added User to the Database with username: " + user.getUsername()));
 
     }
 
     // Find the user by id
     // For Validation through other services
-    @GetMapping("/allUsers/{id}")
-    public Optional<UserModel> getUser(@PathVariable int id) {
-        return userRepository.findById(id);
+    @GetMapping("/allUsers/{username}")
+    public Optional<UserModel> getUser(@PathVariable String username) {
+        return userRepository.findById(username);
     }
 
 }

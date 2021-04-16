@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import login.auth.Models.CouponAdder;
-import login.auth.Models.DealAdder;
+import login.auth.dto.CouponAdder;
+import login.auth.dto.DealAdder;
 import login.auth.Models.RequestResponse;
 import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
@@ -24,9 +24,9 @@ public class UserAuthController {
 
     // Update User
     @PutMapping("/editUser/{id}")
-    public UserModel editUser(@PathVariable int id, @RequestBody UserModel updateUser) {
+    public UserModel editUser(@PathVariable String username, @RequestBody UserModel updateUser) {
 
-        UserModel user = userRepository.findById(id).orElseThrow();
+        UserModel user = userRepository.findById(username).orElseThrow();
         user.setUserName(updateUser.getUserName());
         user.setFirstName(updateUser.getFirstName());
         user.setPassword(updateUser.getPassword());
@@ -36,25 +36,25 @@ public class UserAuthController {
     }
 
     // Add Deal
-    @PutMapping("/addDealId")
-    public ResponseEntity<?> addDealId(@RequestBody DealAdder dealAdder) {
+    @PutMapping("/addDealCode")
+    public ResponseEntity<?> addDealCode(@RequestBody DealAdder dealAdder) {
 
-        UserModel user = userRepository.findById(dealAdder.getUserId()).orElseThrow();
-        user.addDealId(dealAdder.getDealId());
+        UserModel user = userRepository.findById(dealAdder.getUsername()).orElseThrow();
+        user.addDealCode(dealAdder.getDealCode());
         userRepository.save(user);
-        return ResponseEntity.ok(new RequestResponse("Deal added to the User Account!\nDeal id:" + dealAdder.getDealId()
-                + "\nUser Id:" + dealAdder.getUserId()));
+        return ResponseEntity.ok(new RequestResponse("Deal added to the User Account!\nDeal id:"
+                + dealAdder.getDealCode() + "\nUser Id:" + dealAdder.getUsername()));
 
     }
 
     // Add Coupon
-    @PutMapping("/addCouponId")
-    public ResponseEntity<?> addCouponId(@RequestBody CouponAdder couponAdder) {
-        UserModel user = userRepository.findById(couponAdder.getCouponId()).orElseThrow();
-        user.addCouponId(couponAdder.getCouponId());
+    @PutMapping("/addCouponCode")
+    public ResponseEntity<?> addCouponCode(@RequestBody CouponAdder couponAdder) {
+        UserModel user = userRepository.findById(couponAdder.getUsername()).orElseThrow();
+        user.addCouponCode(couponAdder.getCouponCode());
         userRepository.save(user);
         return ResponseEntity.ok(new RequestResponse("Coupon added to the User Account!\nCoupon id:"
-                + couponAdder.getCouponId() + "\nUser Id:" + couponAdder.getUserId()));
+                + couponAdder.getCouponCode() + "\nUser Id:" + couponAdder.getUsername()));
 
     }
 

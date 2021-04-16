@@ -1,4 +1,4 @@
-package deals.couponsmanager.Models;
+package deals.couponsmanager.dto;
 
 public class RequestResponse {
 
@@ -14,7 +14,7 @@ public class RequestResponse {
 
     @Override
     public String toString() {
-        return "AuthenticationResponse [response=" + response + "]";
+        return "Response [response=" + response + "]";
     }
 
     public RequestResponse(String response) {

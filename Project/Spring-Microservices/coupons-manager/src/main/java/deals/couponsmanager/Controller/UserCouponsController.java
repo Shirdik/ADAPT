@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import deals.couponsmanager.Models.CouponAdder;
+import deals.couponsmanager.dto.CouponAdder;
 import deals.couponsmanager.Models.CouponsModel;
-import deals.couponsmanager.Models.RequestResponse;
+import deals.couponsmanager.dto.RequestResponse;
 import deals.couponsmanager.Service.CouponsRepository;
 import deals.couponsmanager.Service.CouponsService;
 
@@ -25,24 +25,24 @@ public class UserCouponsController extends CouponsService {
     @Autowired
     RestTemplate restTemplate;
 
-    @PutMapping("/grabCoupon/{userId}/{couponId}")
-    public ResponseEntity<?> grabCoupon(@PathVariable int couponId, @PathVariable int userId)
+    @PutMapping("/grabCoupon/{username}/{couponCode}")
+    public ResponseEntity<?> grabCoupon(@PathVariable String couponCode, @PathVariable String username)
             throws UsernameNotFoundException {
-        if (isValidUser(userId)) {
+        if (isValidUser(username)) {
 
-            CouponsModel coupon = couponsRepository.findById(couponId).orElseThrow();
-            if (!coupon.getUserIds().contains(userId)) {
+            CouponsModel coupon = couponsRepository.findById(couponCode).orElseThrow();
+            if (!coupon.getUsernames().contains(username)) {
 
                 // Adding User to the Coupon
-                coupon.addUserId(userId);
-                restTemplate.put("https://auth-application/user/addCouponId", new CouponAdder(userId, couponId));
-                rewardsReducer(userId, coupon.getRewards());
+                coupon.addUsername(username);
+                restTemplate.put("https://auth-application/user/addCouponCode", new CouponAdder(username, couponCode));
+                rewardsReducer(username, coupon.getRewards());
 
             } else
-                return ResponseEntity.ok(new RequestResponse("UserId: " + userId + "is already in the List"));
+                return ResponseEntity.ok(new RequestResponse("UserId: " + username + "is already in the List"));
             couponsRepository.save(coupon);
             // Adding Rewards in the User Account
-            return ResponseEntity.ok("Coupon Added!:" + couponId);
+            return ResponseEntity.ok("Coupon Added!:" + couponCode);
 
             // If Rewards are not added in the User Account
             // return ResponseEntity.ok("Couldn't reduce Rewards in the User Account with
@@ -50,7 +50,7 @@ public class UserCouponsController extends CouponsService {
 
         }
         // If the User id is not valid or the user is not found!
-        return ResponseEntity.ok("User Not Found! with id:" + couponId);
+        return ResponseEntity.ok("User Not Found! with id:" + couponCode);
     }
 
 }

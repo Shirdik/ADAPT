@@ -6,23 +6,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "rewards")
 public class RewardsModel {
     @Id
-    private int userId;
+    private String username;
     private double rewards;
 
     public RewardsModel() {
     }
 
-    public RewardsModel(int userId, double rewards) {
-        this.userId = userId;
-        this.rewards = rewards;
+    public String getUsername() {
+        return username;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public double getRewards() {
@@ -30,6 +25,11 @@ public class RewardsModel {
     }
 
     public void setRewards(double rewards) {
+        this.rewards = rewards;
+    }
+
+    public RewardsModel(String username, double rewards) {
+        this.username = username;
         this.rewards = rewards;
     }
 

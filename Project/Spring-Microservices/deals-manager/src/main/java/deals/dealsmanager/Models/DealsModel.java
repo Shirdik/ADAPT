@@ -9,22 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class DealsModel {
 
     @Id
-    private int id;
+    private String dealCode;
     private String title;
     private String description;
     private String imageurl;
     private String link;
-    private Set<Integer> userIds;
+    private Set<String> usernames;
     private double rewards;
-    private Set<Category> Category;
+    private String category;
 
     // Methods
-    public void addUserId(int userId) {
-        this.userIds.add(userId);
-    }
-
-    public void addCategory(Set<Category> categories) {
-        this.Category.addAll(categories);
+    public void addUsername(String username) {
+        this.usernames.add(username);
     }
 
     // Constructor
@@ -32,9 +28,6 @@ public class DealsModel {
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;
@@ -68,14 +61,6 @@ public class DealsModel {
         this.link = link;
     }
 
-    public Set<Integer> getUserIds() {
-        return userIds;
-    }
-
-    public void setUserIds(Set<Integer> userIds) {
-        this.userIds = userIds;
-    }
-
     public double getRewards() {
         return rewards;
     }
@@ -84,12 +69,28 @@ public class DealsModel {
         this.rewards = rewards;
     }
 
-    public Set<Category> getCategory() {
-        return Category;
+    public String getDealCode() {
+        return dealCode;
     }
 
-    public void setCategory(Set<Category> category) {
-        Category = category;
+    public void setDealCode(String dealCode) {
+        this.dealCode = dealCode;
+    }
+
+    public Set<String> getUsernames() {
+        return usernames;
+    }
+
+    public void setUsernames(Set<String> usernames) {
+        this.usernames = usernames;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

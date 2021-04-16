@@ -34,11 +34,11 @@ public class AdminAuthController {
     }
 
     // To delete by id
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int id) throws Exception {
-        userRepository.deleteById(id);
-        restTemplate.delete("https://rewards-manager/admin/delete/" + id);
-        return ResponseEntity.ok(new RequestResponse("Deleted User from the Database with id: " + id));
+    @DeleteMapping("/delete/{username}")
+    public ResponseEntity<?> deleteUser(@PathVariable String username) throws Exception {
+        userRepository.deleteById(username);
+        restTemplate.delete("https://rewards-manager/admin/delete/" + username);
+        return ResponseEntity.ok(new RequestResponse("Deleted User from the Database with name: " + username));
 
     }
 

@@ -27,15 +27,15 @@ public class AdminRewardsController {
         return rewardsRepository.findAll();
     }
 
-    @GetMapping("/allUsers/{id}")
-    public Optional<RewardsModel> getUser(@PathVariable int id) {
-        return rewardsRepository.findById(id);
+    @GetMapping("/allUsers/{username}")
+    public Optional<RewardsModel> getUser(@PathVariable String username) {
+        return rewardsRepository.findById(username);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int id) throws UsernameNotFoundException {
+    @DeleteMapping("/delete/{username}")
+    public ResponseEntity<?> deleteUser(@PathVariable String username) throws UsernameNotFoundException {
 
-        rewardsRepository.deleteById(id);
-        return ResponseEntity.ok("Deleted User from the database with id:" + id);
+        rewardsRepository.deleteById(username);
+        return ResponseEntity.ok("Deleted User from the database with id:" + username);
     }
 }

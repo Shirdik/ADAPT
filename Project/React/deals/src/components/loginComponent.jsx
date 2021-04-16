@@ -1,76 +1,41 @@
-// import React from "react";
-// import Joi from "joi-browser";
-// import htmlForm from "./common/htmlForm";
+import React from "react";
+import Form from "../components/common/form";
+import { axios } from "axios";
+import { Link } from "react-router-dom";
 
-// className Login extends htmlForm {
-//   // Submit Event
-//   handleSubmit = (e) => {
-//     e.preventDefault();
+class Login extends Form {
+  handleChange = ({ target }) => {
+    const { data } = { ...this.state };
+    data[target.name] = target.value;
+    this.setState({ data });
+  };
 
-//     // const errors = this.validate();
-//     // this.setState({ errors: errors || {} });
-//     // if (errors) return;
-
-//     console.log("Submitted");
-//   };
-
-//   // Schema
-//   schema = {
-//     username: Joi.string().required().label("Username"),
-//     password: Joi.string().required().label("Password"),
-//   };
-
-//   state = {
-//     data: {
-//       username: "",
-//       password: "",
-//     },
-//     errors: {
-//       error: "",
-//     },
-//   };
-//   render() {
-//     return (
-//       <div classNameName="container">
-//         <h1 classNameName="display-4">Login</h1>
-//         <htmlForm onSubmit={this.handleSubmit}>
-//           {this.renderInput("username", "Username")}
-//           {this.renderInput("password", "Password", "password")}
-//           {this.renderButton("Login")}
-//         </htmlForm>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Login;
-
-import React, { Component } from "react";
-
-class Login extends Component {
+  handleSubmit = () => {
+    axios.post("http://localhost:8081/logIn", this.state.data);
+  };
+  state = {
+    data: {
+      username: "",
+      password: "",
+    },
+  };
   render() {
     return (
-      <div>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="Username" className="htmlForm-label">
-              Username
-            </label>
-            <input type="text" className="htmlForm-control" id="Username" />
-            <div id="emailHelp" className="htmlForm-text">
-              We'll never share your details with anyone else.
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Password" className="htmlForm-label">
-              Password
-            </label>
-            <input type="password" className="htmlForm-control" id="Password" />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+      <div className="pattern">
+        <h1 className="text-3xl text-center pt-2">Sign In</h1>
+        <div className="nm-inset-gray-200 rounded-md inline-block p-8 mx-20 my-6">
+          <form onSubmit={this.handleSubmit} className="">
+            {this.renderInput("username", "Username")}
+            {this.renderInput("password", "Password", "password")}
+            <Link
+              to="/Login"
+              className="mt-6 bg-indigo-500 text-white px-5 py-3 inline-block shadow-lg rounded-3xl uppercase tracking-wider text-sm font-semibold hover:bg-indigo-400 hover:-translate-y-0.5 transform transition focus: outline-none focus: ring foucs: ring-offset-2 focus: ring-indigo-500 focus:ring-opacity-50 active:bg-indigo-600"
+              onClick={this.handleSubmit}
+            >
+              Log In
+            </Link>
+          </form>
+        </div>
       </div>
     );
   }

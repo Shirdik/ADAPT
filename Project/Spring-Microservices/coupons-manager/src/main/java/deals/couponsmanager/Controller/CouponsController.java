@@ -48,8 +48,8 @@ public class CouponsController {
 
     // For Validation and Retrival of Coupon for the auth applicatiion
     // Should be accessed by everyone while searching
-    @GetMapping("/allCoupons/{id}")
-    public Optional<CouponsModel> allCoupon(@PathVariable int id) {
-        return couponsRepository.findById(id);
+    @GetMapping("/allCoupons/{couponCode}")
+    public Optional<CouponsModel> allCoupon(@PathVariable String couponCode) {
+        return couponsRepository.findById(couponCode);
     }
 }

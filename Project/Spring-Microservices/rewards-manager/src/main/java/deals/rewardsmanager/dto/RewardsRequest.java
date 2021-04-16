@@ -1,15 +1,10 @@
-package deals.rewardsmanager.Models;
+package deals.rewardsmanager.dto;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document(collection = "rewards")
-public class RewardsModel {
-    @Id
+public class RewardsRequest {
     private String username;
     private double rewards;
 
-    public RewardsModel() {
+    public RewardsRequest() {
     }
 
     public String getUsername() {
@@ -28,7 +23,7 @@ public class RewardsModel {
         this.rewards = rewards;
     }
 
-    public RewardsModel(String username, double rewards) {
+    public RewardsRequest(String username, double rewards) {
         this.username = username;
         this.rewards = rewards;
     }

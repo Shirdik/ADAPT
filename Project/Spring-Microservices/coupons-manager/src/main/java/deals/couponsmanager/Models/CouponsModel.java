@@ -9,22 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class CouponsModel {
 
     @Id
-    private int id;
+    private String couponCode;
     private String title;
     private String description;
     private String imageurl;
     private String link;
-    private Set<Integer> userIds;
+    private Set<String> usernames;
     private double rewards;
-    private Set<Category> categories;
+    private String category;
 
     // Methods
-    public void addUserId(int userId) {
-        this.userIds.add(userId);
-    }
-
-    public void addCategory(Set<Category> categories) {
-        this.categories.addAll(categories);
+    public void addUsername(String username) {
+        this.usernames.add(username);
     }
 
     // Constructor
@@ -32,9 +28,6 @@ public class CouponsModel {
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;
@@ -76,20 +69,28 @@ public class CouponsModel {
         this.rewards = rewards;
     }
 
-    public Set<Integer> getUserIds() {
-        return userIds;
+    public String getCouponCode() {
+        return couponCode;
     }
 
-    public void setUserIds(Set<Integer> userIds) {
-        this.userIds = userIds;
+    public void setCouponCode(String couponCode) {
+        this.couponCode = couponCode;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
+    public Set<String> getUsernames() {
+        return usernames;
     }
 
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
+    public void setUsernames(Set<String> usernames) {
+        this.usernames = usernames;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
 }

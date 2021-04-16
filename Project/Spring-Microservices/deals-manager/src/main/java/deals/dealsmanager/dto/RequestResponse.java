@@ -1,4 +1,4 @@
-package deals.rewardsmanager.Models;
+package deals.dealsmanager.dto;
 
 public class RequestResponse {
 

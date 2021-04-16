@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import deals.dealsmanager.Models.DealsModel;
-import deals.dealsmanager.Models.RequestResponse;
+import deals.dealsmanager.dto.RequestResponse;
 import deals.dealsmanager.Service.DealsRepository;
 
 @RestController()
@@ -28,9 +28,9 @@ public class AdminDealsController {
     }
 
     // Delete Deal by id
-    @DeleteMapping("/removeDeal/{id}")
-    public ResponseEntity<?> removeDeal(@PathVariable int id) {
-        dealsRepository.deleteById(id);
-        return ResponseEntity.ok(new RequestResponse("Removed deal from the database with id:" + id));
+    @DeleteMapping("/removeDeal/{dealCode}")
+    public ResponseEntity<?> removeDeal(@PathVariable String dealCode) {
+        dealsRepository.deleteById(dealCode);
+        return ResponseEntity.ok(new RequestResponse("Removed deal from the database with id:" + dealCode));
     }
 }

@@ -16,19 +16,11 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserModel> user = userRepository.findByUserName(username);
+        Optional<UserModel> user = userRepository.findById(username);
 
         user.orElseThrow(() -> new UsernameNotFoundException("User Not Found" + username));
 
         return user.map(MyUserDetails::new).get();
-    }
-
-    public static int idGeneraotor() {
-        UserModel user = userRepository.findById(0).orElseThrow();
-        int id = (int) Math.floor(user.getRewards());
-        user.setRewards(user.getRewards() + 1);
-        userRepository.save(user);
-        return id;
     }
 
 }

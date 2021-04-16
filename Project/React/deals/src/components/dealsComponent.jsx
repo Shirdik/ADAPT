@@ -11,21 +11,27 @@ class Deals extends Component {
   };
   render() {
     return (
-      <div>
-        <h1 className="display-4">Deals Component</h1>
-        {this.state.data.map((deal) => {
-          return (
-            <ItemModel
-              key={deal.id}
-              title={deal.title}
-              description={deal.description}
-              imgurl={deal.imgurl}
-              link={deal.link}
-              rewards={deal.rewards}
-              category={deal.category}
-            />
-          );
-        })}
+      <div className="bg-gray-200">
+        <div className="">
+          <h1 className=" text-5xl mb-10">Deals Component</h1>
+          <div className="grid md:grid-cols-2 p-10 nm-inset-gray-200 mx-10 rounded-lg pattern">
+            {this.state.data.map((deal) => {
+              return (
+                <div className="">
+                  <ItemModel
+                    key={deal.id}
+                    title={deal.title}
+                    description={deal.description}
+                    imageurl={deal.imageurl}
+                    link={deal.link}
+                    rewards={deal.rewards}
+                    category={deal.category}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import deals.rewardsmanager.Models.RewardsModel;
-import deals.rewardsmanager.Models.RewardsRequest;
+import deals.rewardsmanager.dto.RewardsRequest;
 import deals.rewardsmanager.Service.RewardsRepository;
 
 @RestController
@@ -23,7 +23,7 @@ public class UserRewardsController {
     @PutMapping("/addRewards")
     public ResponseEntity<?> addRewards(@RequestBody RewardsRequest rewardsRequest) throws UsernameNotFoundException {
 
-        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUserId()).orElseThrow();
+        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUsername()).orElseThrow();
 
         user.setRewards(user.getRewards() + rewardsRequest.getRewards());
 
@@ -32,11 +32,11 @@ public class UserRewardsController {
 
     }
 
-    @PutMapping("/reduceRewards/")
+    @PutMapping("/reduceRewards")
     public ResponseEntity<?> reduceRewards(@RequestBody RewardsRequest rewardsRequest)
             throws UsernameNotFoundException {
 
-        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUserId()).orElseThrow();
+        RewardsModel user = rewardsRepository.findById(rewardsRequest.getUsername()).orElseThrow();
 
         if (user.getRewards() < rewardsRequest.getRewards())
             return ResponseEntity.ok("Cannot Reduce due to insufficent Rewards");

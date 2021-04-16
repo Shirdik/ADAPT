@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar />
-        <main className="container">
+        <main className="bg-gray-200">
           <Switch>
             <Route path="/Deals" component={DealsComponent}></Route>
             <Route path="/Coupons" component={CouponsComponent}></Route>

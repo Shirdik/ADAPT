@@ -4,8 +4,7 @@ import java.util.Set;
 
 public class UserModel {
 
-    private int id;
-    private String userName;
+    private String username;
     private String firstName;
     private String lastName;
     private String password;
@@ -13,22 +12,18 @@ public class UserModel {
     private String roles;
     private Boolean active;
     private Double rewards;
-    private Set<Integer> dealIds;
-    private Set<Integer> couponIds;
+    private Set<String> dealCodes;
+    private Set<String> couponCodes;
 
     public UserModel() {
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public void setUsername(String username) {
-        this.userName = username;
+        this.username = username;
     }
 
     public String getFirstName() {
@@ -79,13 +74,6 @@ public class UserModel {
         this.rewards = rewards;
     }
 
-    @Override
-    public String toString() {
-        return "User [active=" + active + ", authority=" + roles + ", email=" + email + ", firstName=" + firstName
-                + ", id=" + id + ", lastName=" + lastName + ", password=" + password + ", rewards=" + rewards
-                + ", username=" + userName + "]";
-    }
-
     public String getRoles() {
         return roles;
     }
@@ -94,39 +82,35 @@ public class UserModel {
         this.roles = roles;
     }
 
-    public UserModel(int id) {
-        this.id = id;
-    }
-
     public String getUserName() {
-        return userName;
+        return username;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.username = userName;
     }
 
-    public Set<Integer> getDealIds() {
-        return dealIds;
+    public void addDealCode(String dealId) {
+        this.dealCodes.add(dealId);
     }
 
-    public void setDealIds(Set<Integer> dealIds) {
-        this.dealIds = dealIds;
+    public void addCouponCode(String couponId) {
+        this.couponCodes.add(couponId);
     }
 
-    public Set<Integer> getCouponIds() {
-        return couponIds;
+    public Set<String> getDealCodes() {
+        return dealCodes;
     }
 
-    public void setCouponIds(Set<Integer> couponIds) {
-        this.couponIds = couponIds;
+    public void setDealCodes(Set<String> dealCodes) {
+        this.dealCodes = dealCodes;
     }
 
-    public void addDealId(int dealId) {
-        this.dealIds.add(dealId);
+    public Set<String> getCouponCodes() {
+        return couponCodes;
     }
 
-    public void addCouponId(int couponId) {
-        this.couponIds.add(couponId);
+    public void setCouponCodes(Set<String> couponCodes) {
+        this.couponCodes = couponCodes;
     }
 }

@@ -39,7 +39,7 @@ public class RewardsController {
     public ResponseEntity<?> addUser(@RequestBody RewardsModel rewardsModel) {
 
         rewardsRepository.save(rewardsModel);
-        return ResponseEntity.ok("Added User to the Rewards Database with id:" + rewardsModel.getUserId());
+        return ResponseEntity.ok("Added User to the Rewards Database with id:" + rewardsModel.getUsername());
 
     }
 
