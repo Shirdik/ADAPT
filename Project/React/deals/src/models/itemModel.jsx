@@ -29,13 +29,13 @@ class ItemModel extends Component {
                 <p className="mt-2 text-grey-600 max-w-auto line-clamp-3 hover:line-clamp-none">
                   {this.props.description}
                 </p>
-                <p className="mt-3 ">
+                <p className="my-3 ">
                   <span className=" ">Rewards</span>
                   {this.props.rewards}
                 </p>
                 <div className="">
                   <a
-                    className="mt-6 bg-indigo-500 text-white px-5 py-3 inline-block shadow-lg rounded uppercase tracking-wider text-sm font-semibold hover:bg-indigo-400 hover:-translate-y-0.5 transform transition focus: outline-none focus: ring foucs: ring-offset-2 focus: ring-indigo-500 focus: ring-opacity-50 active:bg-indigo-600"
+                    className="bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5"
                     href={this.props.link}
                     target="_blank"
                     rel="noreferrer"

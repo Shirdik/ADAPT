@@ -11,9 +11,9 @@ class Deals extends Component {
   };
   render() {
     return (
-      <div className="bg-gray-200">
+      <div className="bg-gray-200 min-h-screen">
         <div className="">
-          <h1 className=" text-5xl mb-10">Deals Component</h1>
+          <h1 className=" text-5xl mb-10 text-center">Deals</h1>
           <div className="grid md:grid-cols-2 p-10 nm-inset-gray-200 mx-10 rounded-lg pattern">
             {this.state.data.map((deal) => {
               return (
