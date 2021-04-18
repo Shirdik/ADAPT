@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import login.auth.Models.AuthenticationRequest;
-import login.auth.Models.RequestResponse;
 import login.auth.Models.RewardsModel;
 import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
+import login.auth.dto.RequestResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -65,9 +65,9 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.ok(new RequestResponse("Authentication Failed! " + e));
+            return ResponseEntity.ok(new RequestResponse("Authentication Failed! "));
         }
-        return ResponseEntity.ok(new RequestResponse("Authentication Succesful! " + username));
+        return ResponseEntity.ok(new RequestResponse("Authentication Succesful! "));
     }
 
     // Sign Up Page

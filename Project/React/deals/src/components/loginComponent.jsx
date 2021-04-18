@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../components/common/form";
 import { axios } from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import SignIn from "./icons/signIn";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
@@ -15,7 +15,11 @@ class Login extends Form {
   };
 
   handleSubmit = () => {
-    axios.post("http://localhost:8081/logIn", this.state.data);
+    var response = axios.post("http://localhost:8081/logIn", this.state.data);
+    // alert(response);
+    if (response === "Authentication Succesful!") {
+      <Redirect from="/Login" to="/" />;
+    }
   };
   state = {
     data: {
@@ -36,13 +40,12 @@ class Login extends Form {
               {this.renderInput("username", "Username")}
               {this.renderInput("password", "Password", "password")}
               <div className="flex items-center mt-4 space-x-2">
-                <Link
-                  to="/"
+                <div
                   className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5"
                   onClick={this.handleSubmit}
                 >
                   Login
-                </Link>
+                </div>
                 <Link to="/forgot" className=" text-sm text-gray-700">
                   forgot password?
                 </Link>

@@ -7,16 +7,21 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import login.auth.dto.CouponAdder;
 import login.auth.dto.DealAdder;
-import login.auth.Models.RequestResponse;
+import login.auth.dto.RequestResponse;
+import login.auth.Models.DealsModel;
 import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
 
 @RestController
 @RequestMapping("/user")
 public class UserAuthController {
+    // Rest Template
+    @Autowired
+    private RestTemplate restTemplate;
 
     // Repositroy
     @Autowired
@@ -56,6 +61,22 @@ public class UserAuthController {
         return ResponseEntity.ok(new RequestResponse("Coupon added to the User Account!\nCoupon id:"
                 + couponAdder.getCouponCode() + "\nUser Id:" + couponAdder.getUsername()));
 
+    }
+
+    // Deals Micro-service
+    @PutMapping("/grabDeal/{username}/{dealCode}")
+    public ResponseEntity<?> grabDeal(@PathVariable String username, @PathVariable String dealCode) {
+        restTemplate.put("https://deals-manager/user/grabDeal/" + username + "/" + dealCode, null,
+                ResponseEntity.class);
+        return ResponseEntity.ok("Deal Added!");
+    }
+
+    // Coupons Micro-service
+    @PutMapping("/grabCoupon/{username}/{dealCode}")
+    public ResponseEntity<?> grabCoupon(@PathVariable String username, @PathVariable String couponCode) {
+        restTemplate.put("https://coupons-manager/user/grabDeal/" + username + "/" + couponCode, null,
+                ResponseEntity.class);
+        return ResponseEntity.ok("Coupon Added!");
     }
 
 }

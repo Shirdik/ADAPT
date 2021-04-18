@@ -29,6 +29,12 @@ public class AuthenticationRequest {
         return authority;
     }
 
+    public AuthenticationRequest(String username, String password, String authority) {
+        this.username = username;
+        this.password = password;
+        this.authority = authority;
+    }
+
     public void setAuthority(String authority) {
         this.authority = authority;
     }
