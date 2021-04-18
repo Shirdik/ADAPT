@@ -12,7 +12,7 @@ import login.auth.Models.UserModel;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    static UserRepository userRepository;
+    UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

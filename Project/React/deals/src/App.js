@@ -8,6 +8,7 @@ import NotFoundComponent from "./components/notFoundComponent";
 import NavBar from "./components/navBarComponent";
 import Login from "./components/loginComponent";
 import RegisterComponent from "./components/registerComponent";
+import FooterComponent from "./components/footerComponent";
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Redirect to="/not-found" />
           </Switch>
         </main>
+        <FooterComponent />
       </React.Fragment>
     );
   }

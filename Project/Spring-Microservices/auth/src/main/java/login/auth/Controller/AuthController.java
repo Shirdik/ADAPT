@@ -56,6 +56,7 @@ public class AuthController {
 
     // Sign In Page
     // Let's the user to sign in
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/logIn")
     public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest auth) {
 
@@ -65,9 +66,9 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (BadCredentialsException e) {
-            return ResponseEntity.ok(new RequestResponse("Authentication Failed! "));
+            return ResponseEntity.ok(new RequestResponse("Authentication Failed!"));
         }
-        return ResponseEntity.ok(new RequestResponse("Authentication Succesful! "));
+        return ResponseEntity.ok(new RequestResponse("Authentication Succesful!"));
     }
 
     // Sign Up Page
@@ -76,10 +77,10 @@ public class AuthController {
     public ResponseEntity<?> signUp(@RequestBody UserModel user) {
 
         userRepository.save(user);
-        restTemplate.postForLocation("https://rewards-manager/addUser", new RewardsModel(user.getUsername(), 20.00),
+        restTemplate.postForLocation("https://rewards-manager/addUser", new RewardsModel(user.getUserName(), 20.00),
                 ResponseEntity.class);
         return ResponseEntity
-                .ok(new RequestResponse("Added User to the Database with username: " + user.getUsername()));
+                .ok(new RequestResponse("Added User to the Database with username: " + user.getUserName()));
 
     }
 

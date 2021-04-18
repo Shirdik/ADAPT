@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class UserModel {
 
     @Id
-    private String username;
+    private String userName;
     private String firstName;
     private String lastName;
     private String password;
@@ -25,14 +25,6 @@ public class UserModel {
         this.active = true;
         this.dealCodes = Collections.emptySet();
         this.couponCodes = Collections.emptySet();
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getFirstName() {
@@ -84,11 +76,11 @@ public class UserModel {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        this.username = userName;
+        this.userName = userName;
     }
 
     public void addDealCode(String dealId) {

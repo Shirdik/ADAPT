@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "../components/common/form";
 import { axios } from "axios";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SignIn from "./icons/signIn";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
@@ -14,12 +14,18 @@ class Login extends Form {
     this.setState({ data });
   };
 
-  handleSubmit = () => {
-    var response = axios.post("http://localhost:8081/logIn", this.state.data);
-    // alert(response);
-    if (response === "Authentication Succesful!") {
-      <Redirect from="/Login" to="/" />;
+  handleSubmit = async () => {
+    try {
+      console.log(this.state.data);
+      const { data: response } = await axios.post(
+        "http://localhost:8081/logIn",
+        this.state.data
+      );
+      console.log(response);
+    } catch (e) {
+      console.log(e);
     }
+    // axios.post("http://localhost:8081/logIn", this.state.data).Response().Error(eer=>console.log(eer));
   };
   state = {
     data: {

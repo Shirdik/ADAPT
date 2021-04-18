@@ -11,21 +11,28 @@ class Deals extends Component {
   };
   render() {
     return (
-      <div>
-        <h1 className="display-4">Coupons Component</h1>
-        {this.state.data.map((coupon) => {
-          return (
-            <ItemModel
-              key={coupon.id}
-              title={coupon.title}
-              description={coupon.description}
-              imgurl={coupon.imgurl}
-              link={coupon.link}
-              rewards={coupon.rewards}
-              category={coupon.category}
-            />
-          );
-        })}
+      <div className="bg-gray-200 min-h-screen">
+        <div className="">
+          <h1 className=" text-5xl mb-10 text-center">Coupons</h1>
+          <div className="grid md:grid-cols-2 p-10 nm-inset-gray-200 mx-10 rounded-lg pattern">
+            {this.state.data.map((coupon) => {
+              return (
+                <div className="">
+                  <ItemModel
+                    key={coupon.id}
+                    title={coupon.title}
+                    description={coupon.description}
+                    imageurl={coupon.imageurl}
+                    link={coupon.link}
+                    rewards={coupon.rewards}
+                    category={coupon.category}
+                    // couponCode={coupon.couponCode}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }
