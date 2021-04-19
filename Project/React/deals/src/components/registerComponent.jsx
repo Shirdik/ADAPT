@@ -9,10 +9,6 @@ import Twitter from "./icons/twitter";
 
 class RegisterComponent extends Form {
   handleChange = ({ target }) => {
-    // console.log();
-    // console.log(target.name);
-    // console.log(target.value);
-
     const { data } = { ...this.state };
     data[target.name] = target.value;
     this.setState({ data });
@@ -32,16 +28,16 @@ class RegisterComponent extends Form {
   };
   render() {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center ">
         <div className="nm-inset-gray-200 rounded-md w-4/5 sm:w-3/4 md:grid md:grid-cols-2 space-x-1 lg:w-1/2">
           <div className="hidden md:flex items-center bg-gray-300 rounded-l-md ml-1 my-1">
             <SignUp />
           </div>
           <div className="px-8 pt-2">
-            <h1 className="text-3xl mb-4 text-center pt-2">
+            <h1 className="text-3xl mb-4 text-center pt-2 ">
               Create Your Account
             </h1>
-            <form onSubmit={this.handleSubmit} className="">
+            <form className="">
               {this.renderInput("username", "Username")}
               {this.renderInput("firstName", "First Name")}
               {this.renderInput("lastName", "Last Name")}

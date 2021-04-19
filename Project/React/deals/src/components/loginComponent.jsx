@@ -6,6 +6,8 @@ import SignIn from "./icons/signIn";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
 import Twitter from "./icons/twitter";
+import LottieAnimation from "./lottie/lottieAnimation";
+import signIn from "./lottie/signIn.json";
 
 class Login extends Form {
   handleChange = ({ target }) => {
@@ -38,14 +40,16 @@ class Login extends Form {
       <div className="min-h-screen flex items-center justify-center">
         <div className="nm-inset-gray-200 rounded-md w-4/5 p-8  my-6 sm:3/5 sm:grid sm:grid-cols-2 space-x-1 sm:p-0 mb-32 lg:w-1/2">
           <div className="hidden sm:flex items-center bg-gray-300 rounded-l-sm ml-1 my-1 justify-center">
-            <SignIn />
+            {/* <SignIn />
+             */}
+            <LottieAnimation lotti={signIn} height={250} width={250} />
           </div>
           <div className="sm:p-8">
             <h1 className="text-3xl mb-4 text-center pt-2">Sign In</h1>
             <form className="">
               {this.renderInput("username", "Username")}
               {this.renderInput("password", "Password", "password")}
-              <div className="flex items-center mt-4 space-x-2">
+              <div className="flex items-center mt-6 space-x-2">
                 <div
                   className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5"
                   onClick={this.handleSubmit}

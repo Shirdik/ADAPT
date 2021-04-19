@@ -9,6 +9,10 @@ import NavBar from "./components/navBarComponent";
 import Login from "./components/loginComponent";
 import RegisterComponent from "./components/registerComponent";
 import FooterComponent from "./components/footerComponent";
+import AdminComponent from "./components/admin/adminComponent";
+import AdminDealsComponent from "./components/admin/adminDealsComponent";
+import AdminCouponsComponent from "./components/admin/adminCouponsComponent";
+// import AdminNavBar from "./components/admin/adminNavBarComponent";
 
 class App extends Component {
   render() {
@@ -22,6 +26,12 @@ class App extends Component {
             <Route path="/Home" component={HomeComponent}></Route>
             <Route path="/Login" component={Login}></Route>
             <Route path="/SignUp" component={RegisterComponent}></Route>
+            <Route path="/admin" component={AdminComponent}></Route>
+            <Route path="/DealsEditor" component={AdminDealsComponent}></Route>
+            <Route
+              path="/CouponsEditor"
+              component={AdminCouponsComponent}
+            ></Route>
             <Route path="/not-found" component={NotFoundComponent}></Route>
             <Redirect exact from="/" to="/Home" />
             <Redirect to="/not-found" />

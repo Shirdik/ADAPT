@@ -15,24 +15,19 @@ class FooterComponent extends Component {
                 <h1 className="font-semibold text-gray-600">Navigation</h1>
                 <ul className="flex flex-col space-y-2">
                   <li className="text-gray-700 text-sm">
-                    <Link to="/home" />
-                    Home
+                    <Link to="/home">Home</Link>
                   </li>
                   <li className="text-gray-700 text-sm">
-                    <Link to="/Deals" />
-                    Deals
+                    <Link to="/Deals">Deals</Link>
                   </li>
                   <li className="text-gray-700 text-sm">
-                    <Link to="/Coupons" />
-                    Coupons
+                    <Link to="/Coupons">Coupons</Link>
                   </li>
                   <li className="text-gray-700 text-sm">
-                    <Link to="/LogIn" />
-                    Login
+                    <Link to="/LogIn">Login</Link>
                   </li>
                   <li className="text-gray-700 text-sm">
-                    <Link to="/SignUp" />
-                    SignUp
+                    <Link to="/SignUp">SignUp</Link>
                   </li>
                 </ul>
               </div>
@@ -46,6 +41,7 @@ class FooterComponent extends Component {
                   grabing coupouns in our site which are applicable in all the
                   popular shopping sites
                 </p>
+                <span className=" absolute h-0.5 w-1/2 bg-gradient-to-r from-gray-300 via-gray-600 to-gray-300 mt-52"></span>
               </div>
               <div className="flex flex-col justify-around items-center my-10 space-y-10">
                 <div className="w-10 h-10 nm-flat-gray-200 rounded-full">

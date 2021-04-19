@@ -16,6 +16,7 @@ import deals.dealsmanager.Models.DealsModel;
 import deals.dealsmanager.Service.DealsRepository;
 
 @CrossOrigin(origins = "http://localhost:3000")
+// @RequestMapping("/api")
 @RestController
 public class DealsController {
 
