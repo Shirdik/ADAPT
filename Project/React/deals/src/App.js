@@ -12,13 +12,15 @@ import FooterComponent from "./components/footerComponent";
 import AdminComponent from "./components/admin/adminComponent";
 import AdminDealsComponent from "./components/admin/adminDealsComponent";
 import AdminCouponsComponent from "./components/admin/adminCouponsComponent";
-// import AdminNavBar from "./components/admin/adminNavBarComponent";
+import AdminNavBar from "./components/admin/adminNavBarComponent";
+import UserDetailsService from "./services/userDetailsService";
 
 class App extends Component {
   render() {
+    let { role } = UserDetailsService.getUserDetails();
     return (
       <React.Fragment>
-        <NavBar />
+        {role === "ROLE_ADMIN" ? <AdminNavBar /> : <NavBar />}
         <main className="bg-gray-200">
           <Switch>
             <Route path="/Deals" component={DealsComponent}></Route>

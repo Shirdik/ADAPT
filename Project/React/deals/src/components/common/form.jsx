@@ -45,7 +45,7 @@ class Form extends Component {
   //   this.setState({ data });
   // };
 
-  renderInput = (name, label, type = "text") => {
+  renderInput = (name, label, type = "text", classes = "") => {
     const { data } = this.state;
     return (
       <Input
@@ -54,6 +54,7 @@ class Form extends Component {
         label={label}
         onChange={this.handleChange}
         type={type}
+        classes={classes}
       />
     );
   };

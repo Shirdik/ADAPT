@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import login.auth.Models.AuthenticationRequest;
+import login.auth.Models.AuthenticationResponse;
 import login.auth.Models.RewardsModel;
 import login.auth.Models.UserModel;
+import login.auth.Service.MyUserDetailsService;
 import login.auth.Service.UserRepository;
+import login.auth.Util.JwtUtil;
 import login.auth.dto.RequestResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AuthController {
+    @Autowired
+    JwtUtil JwtUtil;
+
+    @Autowired
+    MyUserDetailsService MyUserDetailsService;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -56,7 +65,6 @@ public class AuthController {
 
     // Sign In Page
     // Let's the user to sign in
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/logIn")
     public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest auth) {
 
@@ -68,7 +76,11 @@ public class AuthController {
         } catch (BadCredentialsException e) {
             return ResponseEntity.ok(new RequestResponse("Authentication Failed!"));
         }
-        return ResponseEntity.ok(new RequestResponse("Authentication Succesful!"));
+
+        final UserDetails userDetails = MyUserDetailsService.loadUserByUsername(auth.getUsername());
+        final String jwt = JwtUtil.generateToken(userDetails);
+
+        return ResponseEntity.ok(new AuthenticationResponse("Authentication Succesful!", jwt));
     }
 
     // Sign Up Page

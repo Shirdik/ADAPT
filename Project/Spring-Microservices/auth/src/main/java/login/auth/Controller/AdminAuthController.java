@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +56,13 @@ public class AdminAuthController {
                 restTemplate.postForObject("https://coupons-manager/admin/addCoupon", coupon, RequestResponse.class));
     }
 
+    // Edit Coupon
+    @PutMapping("/editCoupon")
+    public ResponseEntity<?> editDeal(@RequestBody CouponsModel updatedCoupon) {
+        restTemplate.put("http://coupons-manager/admin/editCoupon", updatedCoupon, ResponseEntity.class);
+        return ResponseEntity.ok("Coupon Updated!");
+    }
+
     @DeleteMapping("/removeCoupon/{couponCode}")
     public ResponseEntity<?> removeCoupon(@PathVariable String couponCode) {
         restTemplate.delete("https://coupons-manager/admin/removeCoupon/" + couponCode);
@@ -67,6 +75,13 @@ public class AdminAuthController {
     public ResponseEntity<?> addDeal(@RequestBody DealsModel deal) {
         return ResponseEntity
                 .ok(restTemplate.postForObject("https://deals-manager/admin/addDeal", deal, RequestResponse.class));
+    }
+
+    // Edit Deal
+    @PutMapping("/editDeal")
+    public ResponseEntity<?> editDeal(@RequestBody DealsModel updatedDeal) {
+        restTemplate.put("http://deals-manager/admin/editDeal", updatedDeal, ResponseEntity.class);
+        return ResponseEntity.ok("Deal Updated!");
     }
 
     @DeleteMapping("/removeDeal/{dealCode}")

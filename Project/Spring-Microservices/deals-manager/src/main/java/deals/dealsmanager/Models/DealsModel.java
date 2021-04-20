@@ -1,5 +1,6 @@
 package deals.dealsmanager.Models;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -25,6 +26,7 @@ public class DealsModel {
 
     // Constructor
     public DealsModel() {
+        this.usernames = Collections.emptySet();
     }
 
     // Getters and Setters

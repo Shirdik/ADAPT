@@ -1,5 +1,6 @@
 package deals.couponsmanager.Models;
 
+import java.util.Collections;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
@@ -25,6 +26,7 @@ public class CouponsModel {
 
     // Constructor
     public CouponsModel() {
+        this.usernames = Collections.emptySet();
     }
 
     // Getters and Setters

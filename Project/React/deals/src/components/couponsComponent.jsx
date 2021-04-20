@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ItemModel from "./common/itemModel";
 import CouponsService from "../services/couponsService";
 import LottieAnimation from "./lottie/lottieAnimation";
-import loading from "../components/lottie/loading.json";
+import loading from "./lottie/loading.json";
 
 class Deals extends Component {
   componentDidMount() {

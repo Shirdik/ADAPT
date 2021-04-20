@@ -1,15 +1,19 @@
 import React from "react";
 import Form from "../components/common/form";
-import { axios } from "axios";
-import { Link } from "react-router-dom";
-import SignIn from "./icons/signIn";
+import { Link, Redirect } from "react-router-dom";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
 import Twitter from "./icons/twitter";
 import LottieAnimation from "./lottie/lottieAnimation";
 import signIn from "./lottie/signIn.json";
+import signInService from "../services/signInService";
+import SimpleReactValidator from "simple-react-validator";
+import userDetailsService from "../services/userDetailsService";
 
 class Login extends Form {
+  componentWillMount() {
+    this.validator = new SimpleReactValidator();
+  }
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -18,16 +22,22 @@ class Login extends Form {
 
   handleSubmit = async () => {
     try {
-      console.log(this.state.data);
-      const { data: response } = await axios.post(
-        "http://localhost:8081/logIn",
-        this.state.data
-      );
-      console.log(response);
+      if (this.validator.allValid()) {
+        const { data: result } = await signInService.signIn(this.state.data);
+        if (result.response === "Authentication Succesful!") {
+          userDetailsService.setUserDetails(this.state.username, result.jwt);
+          alert("Logged In Successfully");
+          <Redirect to="/" />;
+        } else {
+          alert("Bad credentials");
+        }
+      } else {
+        this.validator.showMessages();
+        this.forceUpdate();
+      }
     } catch (e) {
       console.log(e);
     }
-    // axios.post("http://localhost:8081/logIn", this.state.data).Response().Error(eer=>console.log(eer));
   };
   state = {
     data: {
@@ -47,8 +57,24 @@ class Login extends Form {
           <div className="sm:p-8">
             <h1 className="text-3xl mb-4 text-center pt-2">Sign In</h1>
             <form className="">
-              {this.renderInput("username", "Username")}
-              {this.renderInput("password", "Password", "password")}
+              <div className="mt-2">
+                {this.renderInput("username", "Username")}
+                {this.validator.message(
+                  "username",
+                  this.state.data.username,
+                  "required|alpha",
+                  { className: "text-red-800" }
+                )}
+              </div>
+              <div className="mt-2">
+                {this.renderInput("password", "Password", "password")}
+                {this.validator.message(
+                  "password",
+                  this.state.data.password,
+                  "required|alpha",
+                  { className: "text-red-800" }
+                )}
+              </div>
               <div className="flex items-center mt-6 space-x-2">
                 <div
                   className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5"

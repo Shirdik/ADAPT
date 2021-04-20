@@ -4,7 +4,7 @@ public class AuthenticationRequest {
 
     private String username;
     private String password;
-    private String authority;
+    // private String authority;
 
     public String getUsername() {
         return username;
@@ -25,18 +25,18 @@ public class AuthenticationRequest {
     public AuthenticationRequest() {
     }
 
-    public String getAuthority() {
-        return authority;
-    }
+    // public String getAuthority() {
+    // return authority;
+    // }
 
     public AuthenticationRequest(String username, String password, String authority) {
         this.username = username;
         this.password = password;
-        this.authority = authority;
+        // this.authority = authority;
     }
 
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
+    // public void setAuthority(String authority) {
+    // this.authority = authority;
+    // }
 
 }

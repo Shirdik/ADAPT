@@ -30,14 +30,14 @@ public class UserAuthController {
     private UserRepository userRepository;
 
     // Update User
-    @PutMapping("/editUser/{id}")
-    public UserModel editUser(@PathVariable String username, @RequestBody UserModel updateUser) {
+    @PutMapping("/editUser/{username}")
+    public UserModel editUser(@PathVariable String username, @RequestBody UserModel updatedUser) {
 
         UserModel user = userRepository.findById(username).orElseThrow();
-        user.setUserName(updateUser.getUserName());
-        user.setFirstName(updateUser.getFirstName());
-        user.setPassword(updateUser.getPassword());
-        user.setEmail(updateUser.getEmail());
+        user.setUserName(updatedUser.getUserName());
+        user.setFirstName(updatedUser.getFirstName());
+        user.setPassword(updatedUser.getPassword());
+        user.setEmail(updatedUser.getEmail());
         userRepository.save(user);
         return user;
     }
