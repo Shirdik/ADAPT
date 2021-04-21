@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ItemModel from "./common/itemModel";
+import DealModel from "./common/dealModel";
 import dealsService from "../services/dealsService";
 import LottieAnimation from "./lottie/lottieAnimation";
 import loadingAnimation from "../components/lottie/loading.json";
 
 class Deals extends Component {
-  componentDidMount() {
+  componentWillMount() {
     let loading = true;
     this.setState({ loading });
     dealsService.getDeals().then(({ data }) => {
@@ -34,8 +34,9 @@ class Deals extends Component {
               {this.state.data.map((deal) => {
                 return (
                   <div className="">
-                    <ItemModel
-                      key={deal.id}
+                    <DealModel
+                      key={deal.dealCode}
+                      dealCode={deal.dealCode}
                       title={deal.title}
                       description={deal.description}
                       imageurl={deal.imageurl}

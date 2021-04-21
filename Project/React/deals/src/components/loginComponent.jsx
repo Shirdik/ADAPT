@@ -1,14 +1,13 @@
 import React from "react";
 import Form from "../components/common/form";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
 import Twitter from "./icons/twitter";
 import LottieAnimation from "./lottie/lottieAnimation";
 import signIn from "./lottie/signIn.json";
-import signInService from "../services/signInService";
 import SimpleReactValidator from "simple-react-validator";
-import userDetailsService from "../services/userDetailsService";
+import AuthService from "../services/authService";
 
 class Login extends Form {
   componentWillMount() {
@@ -23,17 +22,13 @@ class Login extends Form {
   handleSubmit = async () => {
     try {
       if (this.validator.allValid()) {
-        const { data: result } = await signInService.signIn(this.state.data);
-        if (result.response === "Authentication Succesful!") {
-          userDetailsService.setUserDetails(this.state.username, result.jwt);
+        await AuthService.login(this.state.data).then(() => {
+          this.props.history.push("/");
+          window.location.reload();
           alert("Logged In Successfully");
-          <Redirect to="/" />;
-        } else {
-          alert("Bad credentials");
-        }
+        });
       } else {
         this.validator.showMessages();
-        this.forceUpdate();
       }
     } catch (e) {
       console.log(e);
@@ -71,7 +66,7 @@ class Login extends Form {
                 {this.validator.message(
                   "password",
                   this.state.data.password,
-                  "required|alpha",
+                  "required",
                   { className: "text-red-800" }
                 )}
               </div>

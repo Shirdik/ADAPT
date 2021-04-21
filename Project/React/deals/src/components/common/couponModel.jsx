@@ -1,16 +1,20 @@
 import React, { Component } from "react";
-// import DialogBox from "../components/common/dialogBox";
-// import DialogBox from "./dialogBox";
-import { axios } from "axios";
-
-class ItemModel extends Component {
+import authService from "../../services/authService";
+import CouponsService from "../../services/couponsService";
+class CouponModel extends Component {
   state = {
     open: false,
   };
   handleButton = async () => {
-    // const open = true;
-    // this.setState({ open });
-    axios.put();
+    CouponsService.garbCoupon(
+      authService.getCurrentUser().username,
+      this.props.couponCode
+    )
+      .then(() => {
+        alert(`${this.props.rewards} are deducted to your Account`);
+        window.open(this.props.link, "_blank");
+      })
+      .catch((e) => alert(e));
   };
   render() {
     return (
@@ -18,11 +22,11 @@ class ItemModel extends Component {
         <div className="border border-grey-600 rounded-xl nm-flat-gray-200-lg m-5">
           <div className="grid lg:grid-cols-2">
             {/* <DialogBox
-              open={this.state.open}
-              title={this.props.title}
-              description={this.props.description}
-              buttonText={this.props.link}
-            /> */}
+                  open={this.state.open}
+                  title={this.props.title}
+                  description={this.props.description}
+                  buttonText={this.props.link}
+                /> */}
             <div className="hidden relative lg:block rounded-l-lg bg-gray-300 lg:col">
               <img
                 src={this.props.imageurl}
@@ -48,7 +52,7 @@ class ItemModel extends Component {
                   <div className="">
                     <button
                       className="
-                    bg-gradient-to-r from-red-500 to-pink-500 px-3 py-2 text-gray-100 rounded tracking-wide shadow-lg mb-4 lg:mt-4"
+                        bg-gradient-to-r from-red-500 to-pink-500 px-3 py-2 text-gray-100 rounded tracking-wide shadow-lg mb-4 lg:mt-4"
                     >
                       Rewards - {this.props.rewards}
                     </button>
@@ -79,4 +83,4 @@ class ItemModel extends Component {
   }
 }
 
-export default ItemModel;
+export default CouponModel;

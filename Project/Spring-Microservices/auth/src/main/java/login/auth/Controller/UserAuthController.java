@@ -42,29 +42,6 @@ public class UserAuthController {
         return user;
     }
 
-    // Add Deal
-    @PutMapping("/addDealCode")
-    public ResponseEntity<?> addDealCode(@RequestBody DealAdder dealAdder) {
-
-        UserModel user = userRepository.findById(dealAdder.getUsername()).orElseThrow();
-        user.addDealCode(dealAdder.getDealCode());
-        userRepository.save(user);
-        return ResponseEntity.ok(new RequestResponse("Deal added to the User Account!\nDeal id:"
-                + dealAdder.getDealCode() + "\nUser Id:" + dealAdder.getUsername()));
-
-    }
-
-    // Add Coupon
-    @PutMapping("/addCouponCode")
-    public ResponseEntity<?> addCouponCode(@RequestBody CouponAdder couponAdder) {
-        UserModel user = userRepository.findById(couponAdder.getUsername()).orElseThrow();
-        user.addCouponCode(couponAdder.getCouponCode());
-        userRepository.save(user);
-        return ResponseEntity.ok(new RequestResponse("Coupon added to the User Account!\nCoupon id:"
-                + couponAdder.getCouponCode() + "\nUser Id:" + couponAdder.getUsername()));
-
-    }
-
     // Deals Micro-service
     @PutMapping("/grabDeal/{username}/{dealCode}")
     public ResponseEntity<?> grabDeal(@PathVariable String username, @PathVariable String dealCode) {

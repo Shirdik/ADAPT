@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Form from "./common/form";
 import SignUp from "./icons/signUp";
@@ -7,6 +6,7 @@ import Facebook from "./icons/facebook";
 import Instagram from "./icons/instagram";
 import Twitter from "./icons/twitter";
 import SimpleReactValidator from "simple-react-validator";
+import authService from "../services/authService";
 
 class RegisterComponent extends Form {
   componentWillMount() {
@@ -28,12 +28,12 @@ class RegisterComponent extends Form {
       this.validator.allValid() &&
       this.state.data.password === this.state.confirmPassword
     ) {
-      axios.post("http://localhost:8081/signUp", this.state.data);
-      alert("Registered Succesfully!");
+      authService
+        .register(this.state.data)
+        .then(alert("Registered Succesfully!"));
       <Redirect to="/LogIn" />;
     } else {
       this.validator.showMessages();
-      this.forceUpdate();
     }
   };
   state = {
@@ -95,12 +95,9 @@ class RegisterComponent extends Form {
               </div>
               <div>
                 {this.renderInput("password", "Password", "password")}
-                {this.validator.message(
-                  "password",
-                  data.password,
-                  "required|alpha",
-                  { className: "text-red-800" }
-                )}
+                {this.validator.message("password", data.password, "required", {
+                  className: "text-red-800",
+                })}
               </div>
               <div>
                 {this.renderInput(
@@ -108,12 +105,9 @@ class RegisterComponent extends Form {
                   "Confirm Password",
                   "password"
                 )}
-                {this.validator.message(
-                  "password",
-                  data.password,
-                  "required|alpha",
-                  { className: "text-red-800" }
-                )}
+                {this.validator.message("password", data.password, "required", {
+                  className: "text-red-800",
+                })}
               </div>
               <div className="mt-4 flex space-x-2 items-center justify-start">
                 <input

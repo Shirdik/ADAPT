@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import ItemModel from "./common/itemModel";
+import DealModel from "./common/dealModel";
 import DealsService from "../services/dealsService";
 import LottieAnimation from "./lottie/lottieAnimation";
 import home from "./lottie/home.json";
 
 class HomeComponent extends Component {
-  componentDidMount() {
+  componentWillMount() {
     DealsService.getDeal().then(({ data }) => this.setState({ data }));
   }
   state = {
@@ -40,7 +40,7 @@ class HomeComponent extends Component {
               <div className="flex justify-center">
                 <div className="grid p-10 nm-inset-gray-200 mx-10 rounded-lg pattern my-10 lg:w-4/5">
                   <div className="">
-                    <ItemModel
+                    <DealModel
                       key={this.state.data.id}
                       title={this.state.data.title}
                       description={this.state.data.description}

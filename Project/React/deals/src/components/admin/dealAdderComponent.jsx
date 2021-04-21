@@ -17,13 +17,13 @@ class DealAdderComponent extends Form {
       if (this.validator.allValid()) {
         dealsService
           .addDeal(this.state.data)
-          .then(() => {
+          .then((e) => {
             alert("Updated Deal!");
+            console.log(e);
           })
           .catch((e) => console.log(e));
       } else {
         this.validator.showMessages();
-        this.forceUpdate();
       }
     } catch (e) {
       console.log(e);

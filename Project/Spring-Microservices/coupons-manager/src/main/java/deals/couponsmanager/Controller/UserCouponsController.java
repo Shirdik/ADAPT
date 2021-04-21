@@ -35,7 +35,7 @@ public class UserCouponsController extends CouponsService {
 
                 // Adding User to the Coupon
                 coupon.addUsername(username);
-                restTemplate.put("https://auth-application/user/addCouponCode", new CouponAdder(username, couponCode));
+                restTemplate.put("https://auth-application/addCouponCode", new CouponAdder(username, couponCode));
                 rewardsReducer(username, coupon.getRewards());
 
             } else

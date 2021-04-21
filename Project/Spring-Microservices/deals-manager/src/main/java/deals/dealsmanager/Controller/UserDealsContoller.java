@@ -31,7 +31,7 @@ public class UserDealsContoller extends DealsService {
             // Adding User to the Deals
             if (!deal.getUsernames().contains(username)) {
                 deal.addUsername(username);
-                restTemplate.put("https://auth-application/user/addDealCode", new DealAdder(username, dealCode));
+                restTemplate.put("https://auth-application/addDealCode", new DealAdder(username, dealCode));
                 rewardsAdder(username, deal.getRewards());
 
             } else

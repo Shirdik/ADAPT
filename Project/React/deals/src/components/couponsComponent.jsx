@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ItemModel from "./common/itemModel";
+import CouponModel from "./common/dealModel";
 import CouponsService from "../services/couponsService";
 import LottieAnimation from "./lottie/lottieAnimation";
 import loading from "./lottie/loading.json";
@@ -30,7 +30,7 @@ class Deals extends Component {
               {this.state.data.map((coupon) => {
                 return (
                   <div className="">
-                    <ItemModel
+                    <CouponModel
                       key={coupon.id}
                       title={coupon.title}
                       description={coupon.description}
@@ -38,7 +38,9 @@ class Deals extends Component {
                       link={coupon.link}
                       rewards={coupon.rewards}
                       category={coupon.category}
-                      // couponCode={coupon.couponCode}
+                      couponCode={coupon.couponCode}
+                      color="blue"
+                      buttonText="Grab Now!"
                     />
                   </div>
                 );

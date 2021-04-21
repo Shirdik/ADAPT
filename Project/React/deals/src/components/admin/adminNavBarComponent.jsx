@@ -109,25 +109,25 @@ const AdminNavBar = () => {
             <div className="hidden sm:flex  items-center justify-between space-x-4 lg:pl-32">
               <NavLink
                 className="nm-flat-gray-300 rounded-3xl px-3 py-2 focus:nm-inset-gray-200"
-                to="/admin"
+                to="/"
               >
                 Home
               </NavLink>
               <NavLink
                 className="nm-flat-gray-300 rounded-3xl px-3 py-2 focus:nm-inset-gray-200"
-                to="/admin/Deals"
+                to="/DealsEditor"
               >
                 Deals
               </NavLink>
               <NavLink
                 className="nm-flat-gray-300 rounded-3xl px-3 py-2 focus:nm-inset-gray-200"
-                to="/admin/Coupons"
+                to="/CouponsEditor"
               >
                 Coupons
               </NavLink>
               <NavLink
                 className="nm-flat-gray-300 rounded-3xl px-3 py-2 focus:nm-inset-gray-200 pattern-2"
-                to="/Login"
+                to="/Logout"
               >
                 Logout
               </NavLink>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,8 @@ import login.auth.Models.UserModel;
 import login.auth.Service.MyUserDetailsService;
 import login.auth.Service.UserRepository;
 import login.auth.Util.JwtUtil;
+import login.auth.dto.CouponAdder;
+import login.auth.dto.DealAdder;
 import login.auth.dto.RequestResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -80,7 +83,8 @@ public class AuthController {
         final UserDetails userDetails = MyUserDetailsService.loadUserByUsername(auth.getUsername());
         final String jwt = JwtUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse("Authentication Succesful!", jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(auth.getUsername(), "Authentication Succesful!", jwt,
+                userRepository.findById(auth.getUsername()).get().getRoles()));
     }
 
     // Sign Up Page
@@ -103,4 +107,26 @@ public class AuthController {
         return userRepository.findById(username);
     }
 
+    // Add Deal
+    @PutMapping("/addDealCode")
+    public ResponseEntity<?> addDealCode(@RequestBody DealAdder dealAdder) {
+
+        UserModel user = userRepository.findById(dealAdder.getUsername()).orElseThrow();
+        user.addDealCode(dealAdder.getDealCode());
+        userRepository.save(user);
+        return ResponseEntity.ok(new RequestResponse("Deal added to the User Account!\nDeal id:"
+                + dealAdder.getDealCode() + "\nUser Id:" + dealAdder.getUsername()));
+
+    }
+
+    // Add Coupon
+    @PutMapping("/addCouponCode")
+    public ResponseEntity<?> addCouponCode(@RequestBody CouponAdder couponAdder) {
+        UserModel user = userRepository.findById(couponAdder.getUsername()).orElseThrow();
+        user.addCouponCode(couponAdder.getCouponCode());
+        userRepository.save(user);
+        return ResponseEntity.ok(new RequestResponse("Coupon added to the User Account!\nCoupon id:"
+                + couponAdder.getCouponCode() + "\nUser Id:" + couponAdder.getUsername()));
+
+    }
 }

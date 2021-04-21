@@ -13,7 +13,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable().authorizeRequests()
                 // .antMatchers("/admin").hasRole("ADMIN")
                 // .antMatchers("/user").hasAnyRole("ADMIN", "USER")
-                .antMatchers("/**").permitAll().and().formLogin();
+                .antMatchers("/**").permitAll();
     }
 
 }
