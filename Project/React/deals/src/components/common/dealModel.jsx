@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import authService from "../../services/authService";
 import DealsService from "../../services/dealsService";
+import SucessAlert from "./successAlert";
 class DealModel extends Component {
   state = {
     user: {
@@ -26,7 +27,7 @@ class DealModel extends Component {
     if (this.state.user.username === "") {
       alert("Please Login!");
       // this.props.history.push("/Login");
-      // // window.location.reload();
+      // window.location.reload();
     } else {
       DealsService.garbDeal(
         authService.getCurrentUser().username,
@@ -34,10 +35,9 @@ class DealModel extends Component {
       )
         .then(() => {
           alert(
-            `${this.props.rewards}${(
-              <i>Reward Points</i>
-            )} are added to your Account`
+            `${this.props.rewards} Reward Points are added to your Account`
           );
+
           window.open(this.props.link, "_blank");
         })
         .catch((e) => alert(e));
