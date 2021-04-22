@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import Form from "./common/form";
 import SignUp from "./icons/signUp";
 import Facebook from "./icons/facebook";
@@ -7,9 +6,14 @@ import Instagram from "./icons/instagram";
 import Twitter from "./icons/twitter";
 import SimpleReactValidator from "simple-react-validator";
 import authService from "../services/authService";
+import Input from "./common/input";
 
 class RegisterComponent extends Form {
-  componentWillMount() {
+  // componentWillMount() {
+  //   this.validator = new SimpleReactValidator();
+  // }
+  constructor() {
+    super();
     this.validator = new SimpleReactValidator();
   }
   handleChange = ({ target }) => {
@@ -17,10 +21,10 @@ class RegisterComponent extends Form {
     data[target.name] = target.value;
     this.setState({ data });
   };
-  handleCheckBox = ({ target }) => {
-    let { checkBox } = { ...this.state };
-    checkBox = target.value;
-    this.setState({ checkBox });
+  handleConfirmPassword = ({ target }) => {
+    let { confirmPassword } = { ...this.state };
+    confirmPassword = target.value;
+    this.setState({ confirmPassword });
   };
 
   handleSubmit = () => {
@@ -30,21 +34,24 @@ class RegisterComponent extends Form {
     ) {
       authService
         .register(this.state.data)
-        .then(alert("Registered Succesfully!"));
-      <Redirect to="/LogIn" />;
+        .then(() => {
+          alert("Registered Succesfully!");
+          this.props.history.push("/Login");
+        })
+        .catch((e) => console.log(e));
     } else {
       this.validator.showMessages();
     }
   };
   state = {
     data: {
-      username: "",
+      userName: "",
       firstName: "",
       lastName: "",
       email: "",
       password: "",
     },
-    checkBox: false,
+    // checkBox: false,
     confirmPassword: "",
   };
   render() {
@@ -61,10 +68,10 @@ class RegisterComponent extends Form {
             </h1>
             <form className="">
               <div className="mt-2">
-                {this.renderInput("username", "Username")}
+                {this.renderInput("userName", "Username")}
                 {this.validator.message(
                   "username",
-                  data.username,
+                  data.userName,
                   "required|alpha",
                   { className: "text-red-800" }
                 )}
@@ -100,11 +107,13 @@ class RegisterComponent extends Form {
                 })}
               </div>
               <div>
-                {this.renderInput(
-                  "confirmPassword",
-                  "Confirm Password",
-                  "password"
-                )}
+                <Input
+                  name="confirmPassword"
+                  value={this.state.confirmPassword}
+                  label={"Confirm Password"}
+                  onChange={this.handleConfirmPassword}
+                  type={"password"}
+                />
                 {this.validator.message("password", data.password, "required", {
                   className: "text-red-800",
                 })}
@@ -113,21 +122,21 @@ class RegisterComponent extends Form {
                 <input
                   name="agree"
                   type="checkbox"
-                  className=" border-none rounded-sm w-3 h-3 focus:ring-yellow-500 ring-1"
-                  value={this.state.checkBox}
-                  onChange={this.handleCheckBox}
+                  className=" border-none rounded-sm w-3 h-3 focus:ring-yellow-500 ring-1 focus:outiline-none"
+                  // value={this.state.checkBox}
+                  // onChange={this.handleCheckBox}
                 />
                 <label htmlFor="agree" className="text-xs text-gray-700">
                   I agree for the terms and Conditions
                 </label>
               </div>
-              <button
+              <div
                 to="/Login"
-                className=" mt-4 px-3 py-2 rounded text-yellow-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-yellow-300 active:bg-yellow-500 hover:-translate-y-0.5 bg-yellow-400"
+                className=" mt-4 px-3 py-2 rounded text-yellow-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-yellow-300 active:bg-yellow-500 hover:-translate-y-0.5 bg-yellow-400 cursor-pointer"
                 onClick={this.handleSubmit}
               >
                 Register
-              </button>
+              </div>
               <div className="flex justify-around items-center my-8 -space-x-10">
                 <div className="w-10 h-10 nm-flat-gray-200 rounded-full">
                   <Facebook />

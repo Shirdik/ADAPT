@@ -21,7 +21,7 @@ class HomeComponent extends Component {
               <div className="hidden lg:inline-flex">
                 <LottieAnimation lotti={home} height={200} width={200} />
               </div>
-              <div className="text-transparent bg-gradient-to-r bg-clip-text text-6xl from-blue-500 to-pink-500 font-bold display lg:text-8xl lg:py-32 py-20">
+              <div className="text-transparent bg-gradient-to-r bg-clip-text text-6xl from-indigo-500 to-pink-500 font-bold display lg:text-8xl lg:py-32 py-20">
                 Grab 'n' Go
               </div>
             </div>

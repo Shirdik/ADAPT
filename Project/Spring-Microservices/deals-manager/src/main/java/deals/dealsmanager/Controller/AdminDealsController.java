@@ -32,13 +32,20 @@ public class AdminDealsController {
     @PutMapping("/editDeal")
     public ResponseEntity<?> editDeal(@RequestBody DealsModel updatedDeal) {
         DealsModel deal = dealsRepository.findById(updatedDeal.getDealCode()).orElseThrow();
-        deal.setTitle(updatedDeal.getTitle());
-        deal.setDealCode(updatedDeal.getDealCode());
-        deal.setDescription(updatedDeal.getDescription());
-        deal.setImageurl(updatedDeal.getImageurl());
-        deal.setLink(updatedDeal.getLink());
-        deal.setRewards(updatedDeal.getRewards());
-        deal.setCategory(updatedDeal.getCategory());
+        if (updatedDeal.getTitle() != "")
+            deal.setTitle(updatedDeal.getTitle());
+        if (updatedDeal.getDealCode() != "")
+            deal.setDealCode(updatedDeal.getDealCode());
+        if (updatedDeal.getDescription() != "")
+            deal.setDescription(updatedDeal.getDescription());
+        if (updatedDeal.getImageurl() != "")
+            deal.setImageurl(updatedDeal.getImageurl());
+        if (updatedDeal.getLink() != "")
+            deal.setLink(updatedDeal.getLink());
+        if (updatedDeal.getRewards() != 0)
+            deal.setRewards(updatedDeal.getRewards());
+        if (updatedDeal.getCategory() != "")
+            deal.setCategory(updatedDeal.getCategory());
         dealsRepository.save(deal);
         return ResponseEntity.ok(new RequestResponse("Updated Deal" + deal.getTitle()));
     }

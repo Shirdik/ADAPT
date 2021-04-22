@@ -7,6 +7,10 @@ class DealUpdaterComponent extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
+  // constructor() {
+  //   super();
+  //   this.validator = new SimpleReactValidator();
+  // }
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -62,62 +66,62 @@ class DealUpdaterComponent extends Form {
                   </div>
                   <div>
                     {this.renderInput("title", "Title")}
-                    {this.validator.message("Title", data.title, "required", {
+                    {/* {this.validator.message("Title", data.title, "required", {
                       className: "text-red-800",
-                    })}
+                    })} */}
                   </div>
                   <div>
                     {this.renderInput("description", "Description")}
-                    {this.validator.message(
+                    {/* {this.validator.message(
                       "Description",
                       data.description,
                       "required",
                       { className: "text-red-800" }
-                    )}
+                    )} */}
                   </div>
                   <div>
                     {this.renderInput("imageurl", "Image Url")}
-                    {this.validator.message(
+                    {/* {this.validator.message(
                       "Image Url",
                       data.imageurl,
                       "required",
                       { className: "text-red-800" }
-                    )}
+                    )} */}
                   </div>
                   <div>
                     {this.renderInput("link", "Link")}
-                    {this.validator.message("Link", data.link, "required", {
+                    {/* {this.validator.message("Link", data.link, "required", {
                       className: "text-red-800",
-                    })}
+                    })} */}
                   </div>
                   <div>
                     {this.renderInput("rewards", "Rewards")}
-                    {this.validator.message(
+                    {/* {this.validator.message(
                       "rewards",
                       data.rewards,
                       "required",
                       {
                         className: "text-red-800",
                       }
-                    )}
+                    )} */}
                   </div>
                   <div>
                     {this.renderInput("category", "Category")}
-                    {this.validator.message(
+                    {/* {this.validator.message(
                       "category",
                       data.category,
                       "required",
                       { className: "text-red-800" }
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>
-              <button
-                className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5 my-6"
+              <div
+                className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5 my-6 cursor-pointer"
                 onClick={this.handleSubmit}
               >
                 Update
-              </button>
+              </div>
             </form>
           </div>
         </div>

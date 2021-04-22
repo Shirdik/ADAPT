@@ -31,16 +31,23 @@ public class AdminCouponsController {
     // Edit Coupon
     @PutMapping("/editCoupon")
     public ResponseEntity<?> editDeal(@RequestBody CouponsModel updatedCoupon) {
-        CouponsModel deal = couponsRepository.findById(updatedCoupon.getCouponCode()).orElseThrow();
-        deal.setTitle(updatedCoupon.getTitle());
-        deal.setCouponCode(updatedCoupon.getCouponCode());
-        deal.setDescription(updatedCoupon.getDescription());
-        deal.setImageurl(updatedCoupon.getImageurl());
-        deal.setLink(updatedCoupon.getLink());
-        deal.setRewards(updatedCoupon.getRewards());
-        deal.setCategory(updatedCoupon.getCategory());
-        couponsRepository.save(deal);
-        return ResponseEntity.ok(new RequestResponse("Updated Deal" + deal.getTitle()));
+        CouponsModel coupon = couponsRepository.findById(updatedCoupon.getCouponCode()).orElseThrow();
+        if (updatedCoupon.getTitle() != "")
+            coupon.setTitle(updatedCoupon.getTitle());
+        if (updatedCoupon.getCouponCode() != "")
+            coupon.setCouponCode(updatedCoupon.getCouponCode());
+        if (updatedCoupon.getDescription() != "")
+            coupon.setDescription(updatedCoupon.getDescription());
+        if (updatedCoupon.getImageurl() != "")
+            coupon.setImageurl(updatedCoupon.getImageurl());
+        if (updatedCoupon.getLink() != "")
+            coupon.setLink(updatedCoupon.getLink());
+        if (updatedCoupon.getRewards() != 0)
+            coupon.setRewards(updatedCoupon.getRewards());
+        if (updatedCoupon.getCategory() != "")
+            coupon.setCategory(updatedCoupon.getCategory());
+        couponsRepository.save(coupon);
+        return ResponseEntity.ok(new RequestResponse("Updated Deal" + coupon.getTitle()));
     }
 
     // Remove Coupon

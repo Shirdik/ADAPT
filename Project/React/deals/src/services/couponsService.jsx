@@ -17,7 +17,7 @@ class CouponsService {
     return axios.post(COUPONS_ADD_COUPON, coupon, { headers: AuthHeader() });
   };
   grabCoupon = async (username, couponCode) => {
-    return axios.put(`${COUPONS_GRAB_COUPON}/${username}/${couponCode}`, {
+    return axios.put(`${COUPONS_GRAB_COUPON}/${username}/${couponCode}`, null, {
       headers: AuthHeader(),
     });
   };
@@ -25,7 +25,7 @@ class CouponsService {
     return axios.put(COUPONS_EDIT_COUPON, coupon, { headers: AuthHeader() });
   };
   removeCoupon = async (couponCode) => {
-    return axios.delete(`${COUPONS_REMOVE_COUPON}/${couponCode}`, {
+    return axios.delete(`${COUPONS_REMOVE_COUPON}/${couponCode}`, null, {
       headers: AuthHeader(),
     });
   };

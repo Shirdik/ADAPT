@@ -1,20 +1,43 @@
 import React, { Component } from "react";
 import authService from "../../services/authService";
-import CouponsService from "../../services/couponsService";
+import couponsService from "../../services/couponsService";
 class CouponModel extends Component {
   state = {
-    open: false,
+    user: {
+      username: "",
+      jwt: "",
+      role: "",
+    },
   };
+  componentWillMount() {
+    let user = authService.getCurrentUser();
+    if (user === null) {
+      let username = "";
+      let jwt = "";
+      let role = "";
+      this.setState({ username, jwt, role });
+    } else {
+      this.setState({ user });
+    }
+  }
   handleButton = async () => {
-    CouponsService.garbCoupon(
-      authService.getCurrentUser().username,
-      this.props.couponCode
-    )
-      .then(() => {
-        alert(`${this.props.rewards} are deducted to your Account`);
-        window.open(this.props.link, "_blank");
-      })
-      .catch((e) => alert(e));
+    if (this.state.user.username !== "") {
+      couponsService
+        .grabCoupon(this.state.user.username, this.props.couponCode)
+        .then(() => {
+          alert(
+            `${this.props.rewards}${(
+              <i>Reward Points</i>
+            )} are deducted to your Account`
+          );
+          window.open(this.props.link, "_blank");
+        })
+        .catch((e) => {
+          this.state.user.role === "ROLE_ADMIN"
+            ? alert("ADMIN cannot grab a Coupon")
+            : alert(e);
+        });
+    }
   };
   render() {
     return (
@@ -61,7 +84,7 @@ class CouponModel extends Component {
                 </div>
                 <div className="">
                   <button
-                    className={` bg-${this.props.color}-400 px-3 py-2 rounded text-${this.props.color}-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-${this.props.color}-300 active:bg-${this.props.color}-500 hover:-translate-y-0.5 shadow-lg`}
+                    className={` bg-${this.props.color}-400 px-3 py-2 rounded text-${this.props.color}-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-${this.props.color}-300 active:bg-${this.props.color}-500 hover:-translate-y-0.5 shadow-lg  focus:outline-none`}
                     // href={this.props.link}
                     // target="_blank"
                     // rel="noreferrer"

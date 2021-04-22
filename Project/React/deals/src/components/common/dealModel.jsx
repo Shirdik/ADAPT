@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-// import { useHistory } from "react-router";
 import authService from "../../services/authService";
 import DealsService from "../../services/dealsService";
-// import DialogBox from "../components/common/dialogBox";
 class DealModel extends Component {
   state = {
     user: {
@@ -11,7 +9,7 @@ class DealModel extends Component {
       role: "",
     },
   };
-  componentDidMount() {
+  componentWillMount() {
     let user = authService.getCurrentUser();
     if (user === null) {
       let username = "";
@@ -23,18 +21,27 @@ class DealModel extends Component {
     }
   }
   handleButton = async () => {
-    // if (this.state.user.username === "") {
-    //   this.props.history.push("/Login");
-    // } else {
-    DealsService.garbDeal(
-      authService.getCurrentUser().username,
-      this.props.dealCode
-    )
-      .then(() => {
-        alert(`${this.props.rewards} are added to your Account`);
-        window.open(this.props.link, "_blank");
-      })
-      .catch((e) => alert(e));
+    if (this.state.user.role === "ROLE_ADMIN")
+      return alert("ADMIN cannot grab a Deal");
+    if (this.state.user.username === "") {
+      alert("Please Login!");
+      // this.props.history.push("/Login");
+      // // window.location.reload();
+    } else {
+      DealsService.garbDeal(
+        authService.getCurrentUser().username,
+        this.props.dealCode
+      )
+        .then(() => {
+          alert(
+            `${this.props.rewards}${(
+              <i>Reward Points</i>
+            )} are added to your Account`
+          );
+          window.open(this.props.link, "_blank");
+        })
+        .catch((e) => alert(e));
+    }
     // }
   };
   render() {
@@ -82,14 +89,7 @@ class DealModel extends Component {
                 </div>
                 <div className="">
                   <button
-                    className={` bg-${this.props.color}-400 px-3 py-2 rounded text-${this.props.color}-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-${this.props.color}-300 active:bg-${this.props.color}-500 hover:-translate-y-0.5 shadow-lg`}
-                    // href={this.props.link}
-                    // target="_blank"
-                    // rel="noreferrer"
-                    // onClick={() => {
-                    //   const open = true;
-                    //   this.setState({ open });
-                    // }}
+                    className={` bg-${this.props.color}-400 px-3 py-2 rounded text-${this.props.color}-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-${this.props.color}-300 active:bg-${this.props.color}-500 hover:-translate-y-0.5 shadow-lg focus:outline-none`}
                     onClick={this.handleButton}
                   >
                     {this.props.buttonText}

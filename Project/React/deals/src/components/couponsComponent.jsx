@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import CouponModel from "./common/dealModel";
+import CouponModel from "./common/couponModel";
 import CouponsService from "../services/couponsService";
 import LottieAnimation from "./lottie/lottieAnimation";
 import loading from "./lottie/loading.json";
 
-class Deals extends Component {
+class Coupons extends Component {
   componentDidMount() {
     let loading = true;
     this.setState({ loading });
@@ -54,4 +54,4 @@ class Deals extends Component {
   }
 }
 
-export default Deals;
+export default Coupons;

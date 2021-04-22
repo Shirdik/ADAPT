@@ -13,6 +13,10 @@ class Login extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
+  // constructor() {
+  //   super();
+  //   this.validator = new SimpleReactValidator();
+  // }
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -72,7 +76,7 @@ class Login extends Form {
               </div>
               <div className="flex items-center mt-6 space-x-2">
                 <div
-                  className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5"
+                  className=" bg-blue-400 px-3 py-2 rounded text-blue-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-blue-300 active:bg-blue-500 hover:-translate-y-0.5 focus:outline-none  cursor-pointer"
                   onClick={this.handleSubmit}
                 >
                   Login
