@@ -19,6 +19,7 @@ import login.auth.Models.CouponsModel;
 import login.auth.Models.DealsModel;
 import login.auth.Models.UserModel;
 import login.auth.Service.UserRepository;
+import login.auth.dto.RequestModel;
 import login.auth.dto.RequestResponse;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -51,7 +52,7 @@ public class AdminAuthController {
 
     // Coupons Micro-service
     @PostMapping("/addCoupon")
-    public ResponseEntity<?> addCoupon(@RequestBody CouponsModel coupon) {
+    public ResponseEntity<?> addCoupon(@RequestBody RequestModel coupon) {
         return ResponseEntity.ok(
                 restTemplate.postForObject("https://coupons-manager/admin/addCoupon", coupon, RequestResponse.class));
     }
@@ -72,7 +73,7 @@ public class AdminAuthController {
 
     // Deals Micro-service
     @PostMapping("/addDeal")
-    public ResponseEntity<?> addDeal(@RequestBody DealsModel deal) {
+    public ResponseEntity<?> addDeal(@RequestBody RequestModel deal) {
         return ResponseEntity
                 .ok(restTemplate.postForObject("https://deals-manager/admin/addDeal", deal, RequestResponse.class));
     }

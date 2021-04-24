@@ -6,7 +6,10 @@ class RemoveCouponComponent extends Form {
   handleButton = () => {
     couponsService
       .removeCoupon(this.state.data.couponCode)
-      .then((e) => alert(e))
+      .then(() => {
+        alert("Deleted Successfully!");
+        window.location.reload();
+      })
       .catch((e) => {
         console.log(e);
         alert("Something Went Wrong");
@@ -33,7 +36,7 @@ class RemoveCouponComponent extends Form {
                 {this.renderInput("couponCode", "Coupon Code")}
                 <div
                   className=" bg-red-500 px-3 py-2 rounded text-red-900 inline-block uppercase text-sm tracking-wider font-semibold transition transform duration-300 hover:bg-red-500 active:bg-red-700 hover:-translate-y-0.5 my-6 cursor-pointer"
-                  onClick={this.handleSubmit}
+                  onClick={this.handleButton}
                 >
                   Delete
                 </div>

@@ -26,9 +26,7 @@ class CouponModel extends Component {
         .grabCoupon(this.state.user.username, this.props.couponCode)
         .then(() => {
           alert(
-            `${this.props.rewards}${(
-              <i>Reward Points</i>
-            )} are deducted to your Account`
+            `${this.props.rewards} Reward Points are deducted to your Account`
           );
           window.open(this.props.link, "_blank");
         })

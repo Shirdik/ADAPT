@@ -6,10 +6,7 @@ class DealAdderComponent extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
-  // constructor() {
-  //   super();
-  //   this.validator = new SimpleReactValidator();
-  // }
+
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -19,15 +16,17 @@ class DealAdderComponent extends Form {
   handleSubmit = async () => {
     try {
       if (this.validator.allValid()) {
+        console.log(this.state.data);
         dealsService
           .addDeal(this.state.data)
           .then((e) => {
-            alert("Updated Deal!");
+            alert("Deal Added!");
             console.log(e);
           })
           .catch((e) => console.log(e));
       } else {
         this.validator.showMessages();
+        this.forceUpdate();
       }
     } catch (e) {
       console.log(e);
@@ -35,7 +34,7 @@ class DealAdderComponent extends Form {
   };
   state = {
     data: {
-      dealCode: "",
+      code: "",
       title: "",
       description: "",
       imageurl: "",
@@ -55,10 +54,10 @@ class DealAdderComponent extends Form {
                 <h1 className="text-3xl py-6">Add Deal</h1>
                 <div className="flex flex-col space-y-3">
                   <div>
-                    {this.renderInput("dealCode", "Deal Code")}
+                    {this.renderInput("code", "Deal Code")}
                     {this.validator.message(
                       "Deal Code",
-                      data.dealCode,
+                      data.code,
                       "required",
                       { className: "text-red-800" }
                     )}
@@ -98,7 +97,7 @@ class DealAdderComponent extends Form {
                     {this.validator.message(
                       "rewards",
                       data.rewards,
-                      "required",
+                      "required|numeric|min:0,num",
                       {
                         className: "text-red-800",
                       }

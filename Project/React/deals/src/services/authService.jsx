@@ -1,13 +1,16 @@
 import axios from "axios";
+import AuthHeader from "./authHeader";
 
 const LOGIN_URL = "http://localhost:8081/logIn";
 const REGISTER_URL = "http://localhost:8081/signUp";
+const USER_DETAILS_URL = "http://localhost:8081/user";
 class AuthService {
   login(loginData) {
     return axios.post(LOGIN_URL, loginData).then(({ data }) => {
-      if (data.jwt) {
-        localStorage.setItem("user", JSON.stringify(data));
-      }
+      // console.log(data);
+      // if (data.data.jwt !== null) {
+      localStorage.setItem("user", JSON.stringify(data));
+      // }
       return data;
     });
   }
@@ -22,6 +25,12 @@ class AuthService {
 
   getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"));
+  }
+
+  getUserDetails(username) {
+    return axios.get(`${USER_DETAILS_URL}/${username}`, {
+      headers: AuthHeader(),
+    });
   }
 }
 

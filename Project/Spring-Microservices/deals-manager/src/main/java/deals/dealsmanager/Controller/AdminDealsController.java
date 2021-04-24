@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import deals.dealsmanager.Models.DealsModel;
+import deals.dealsmanager.dto.RequestModel;
 import deals.dealsmanager.dto.RequestResponse;
 import deals.dealsmanager.Service.DealsRepository;
 
@@ -23,9 +24,10 @@ public class AdminDealsController {
 
     // Add Deal
     @PostMapping("/addDeal")
-    public ResponseEntity<?> addDeal(@RequestBody DealsModel deal) {
-        dealsRepository.save(deal);
-        return ResponseEntity.ok(new RequestResponse("Added deal to the database:" + deal.getTitle()));
+    public ResponseEntity<?> addDeal(@RequestBody RequestModel deal) {
+        dealsRepository.save(new DealsModel(deal.getCode(), deal.getTitle(), deal.getDescription(), deal.getImageurl(),
+                deal.getLink(), deal.getRewards(), deal.getCategory()));
+        return ResponseEntity.ok(new RequestResponse("Added deal to the database:" + deal.getCode()));
     }
 
     // Edit Coupon

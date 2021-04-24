@@ -3,14 +3,11 @@ import Form from "./../common/form";
 import SimpleReactValidator from "simple-react-validator";
 import CouponsService from "../../services/couponsService";
 
-class DealUpdaterComponent extends Form {
+class CouponUpdaterComponent extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
-  // constructor() {
-  //   super();
-  //   this.validator = new SimpleReactValidator();
-  // }
+
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -22,7 +19,8 @@ class DealUpdaterComponent extends Form {
       if (this.validator.allValid()) {
         CouponsService.addCoupon(this.state.data)
           .then(() => {
-            alert("Deal Added!");
+            alert("Coupon Added!");
+            window.location.reload();
           })
           .catch((e) => console.log(e));
       } else {
@@ -35,7 +33,7 @@ class DealUpdaterComponent extends Form {
   };
   state = {
     data: {
-      couponCode: "",
+      code: "",
       title: "",
       description: "",
       imageurl: "",
@@ -55,10 +53,10 @@ class DealUpdaterComponent extends Form {
                 <h1 className="text-3xl py-6">Add Coupon</h1>
                 <div className="flex flex-col space-y-3">
                   <div>
-                    {this.renderInput("couponCode", "Coupon Code")}
+                    {this.renderInput("code", "Coupon Code")}
                     {this.validator.message(
                       "Coupon Code",
-                      data.couponCode,
+                      data.code,
                       "required",
                       { className: "text-red-800" }
                     )}
@@ -98,7 +96,7 @@ class DealUpdaterComponent extends Form {
                     {this.validator.message(
                       "rewards",
                       data.rewards,
-                      "required",
+                      "required|numeric|min:0,num",
                       {
                         className: "text-red-800",
                       }
@@ -129,4 +127,4 @@ class DealUpdaterComponent extends Form {
   }
 }
 
-export default DealUpdaterComponent;
+export default CouponUpdaterComponent;

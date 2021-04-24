@@ -41,6 +41,7 @@ class RegisterComponent extends Form {
         .catch((e) => console.log(e));
     } else {
       this.validator.showMessages();
+      this.forceUpdate();
     }
   };
   state = {
@@ -72,7 +73,7 @@ class RegisterComponent extends Form {
                 {this.validator.message(
                   "username",
                   data.userName,
-                  "required|alpha",
+                  "required|alpha_num",
                   { className: "text-red-800" }
                 )}
               </div>
@@ -102,9 +103,14 @@ class RegisterComponent extends Form {
               </div>
               <div>
                 {this.renderInput("password", "Password", "password")}
-                {this.validator.message("password", data.password, "required", {
-                  className: "text-red-800",
-                })}
+                {this.validator.message(
+                  "password",
+                  data.password,
+                  "required|alpha_num",
+                  {
+                    className: "text-red-800",
+                  }
+                )}
               </div>
               <div>
                 <Input
@@ -114,17 +120,20 @@ class RegisterComponent extends Form {
                   onChange={this.handleConfirmPassword}
                   type={"password"}
                 />
-                {this.validator.message("password", data.password, "required", {
-                  className: "text-red-800",
-                })}
+                {this.validator.message(
+                  "password",
+                  data.password,
+                  "required|alpha_num",
+                  {
+                    className: "text-red-800",
+                  }
+                )}
               </div>
               <div className="mt-4 flex space-x-2 items-center justify-start">
                 <input
                   name="agree"
                   type="checkbox"
                   className=" border-none rounded-sm w-3 h-3 focus:ring-yellow-500 ring-1 focus:outiline-none"
-                  // value={this.state.checkBox}
-                  // onChange={this.handleCheckBox}
                 />
                 <label htmlFor="agree" className="text-xs text-gray-700">
                   I agree for the terms and Conditions

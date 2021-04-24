@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import authService from "../../services/authService";
 import DealsService from "../../services/dealsService";
-import SucessAlert from "./successAlert";
 class DealModel extends Component {
   state = {
     user: {
@@ -26,6 +25,7 @@ class DealModel extends Component {
       return alert("ADMIN cannot grab a Deal");
     if (this.state.user.username === "") {
       alert("Please Login!");
+      console.log(this.props);
       // this.props.history.push("/Login");
       // window.location.reload();
     } else {
@@ -49,12 +49,6 @@ class DealModel extends Component {
       <React.Fragment>
         <div className="border border-grey-600 rounded-xl nm-flat-gray-200-lg m-5">
           <div className="grid lg:grid-cols-2">
-            {/* <DialogBox
-              open={this.state.open}
-              title={this.props.title}
-              description={this.props.description}
-              buttonText={this.props.link}
-            /> */}
             <div className="hidden relative lg:block rounded-l-lg bg-gray-300 lg:col">
               <img
                 src={this.props.imageurl}
@@ -73,7 +67,7 @@ class DealModel extends Component {
 
               <div className="col p-6 lg:p-8  max-w-md mx-auto">
                 <h1 className="text-2xl  text-blue-900">{this.props.title}</h1>
-                <p className="my-2 text-grey-600 line-clamp-3 lg:line-clamp-5 hover:line-clamp-none lg:py-4 text-sm">
+                <p className="my-2 text-grey-600 line-clamp-3 lg:line-clamp-5 hover:line-clamp-none lg:py-4 text-sm ">
                   {this.props.description}
                 </p>
                 <div className="py-2 flex items-center justify-center">

@@ -95,4 +95,15 @@ public class DealsModel {
         this.category = category;
     }
 
+    public DealsModel(String dealCode, String title, String description, String imageurl, String link, double rewards,
+            String category) {
+        this.dealCode = dealCode;
+        this.title = title;
+        this.description = description;
+        this.imageurl = imageurl;
+        this.link = link;
+        this.rewards = rewards;
+        this.category = category;
+        this.usernames = Collections.emptySet();
+    }
 }

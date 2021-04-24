@@ -23,6 +23,7 @@ class DealUpdaterComponent extends Form {
         CouponsService.editCoupon(this.state.data)
           .then(() => {
             alert("Coupon Updated!");
+            window.location.reload();
           })
           .catch((e) => {
             alert("Please Check the Details");
@@ -66,56 +67,22 @@ class DealUpdaterComponent extends Form {
                       { className: "text-red-800" }
                     )}
                   </div>
-                  <div>
-                    {this.renderInput("title", "Title")}
-                    {/* {this.validator.message("Title", data.title, "required", {
-                      className: "text-red-800",
-                    })} */}
-                  </div>
-                  <div>
-                    {this.renderInput("description", "Description")}
-                    {/* {this.validator.message(
-                      "Description",
-                      data.description,
-                      "required",
-                      { className: "text-red-800" }
-                    )} */}
-                  </div>
-                  <div>
-                    {this.renderInput("imageurl", "Image Url")}
-                    {/* {this.validator.message(
-                      "Image Url",
-                      data.imageurl,
-                      "required",
-                      { className: "text-red-800" }
-                    )} */}
-                  </div>
-                  <div>
-                    {this.renderInput("link", "Link")}
-                    {/* {this.validator.message("Link", data.link, "required", {
-                      className: "text-red-800",
-                    })} */}
-                  </div>
+                  <div>{this.renderInput("title", "Title")}</div>
+                  <div>{this.renderInput("description", "Description")}</div>
+                  <div>{this.renderInput("imageurl", "Image Url")}</div>
+                  <div>{this.renderInput("link", "Link")}</div>
                   <div>
                     {this.renderInput("rewards", "Rewards")}
-                    {/* {this.validator.message(
+                    {this.validator.message(
                       "rewards",
                       data.rewards,
-                      "required",
+                      "|numeric|min:0,num",
                       {
                         className: "text-red-800",
-                      } */}
-                    {/* )} */}
+                      }
+                    )}
                   </div>
-                  <div>
-                    {this.renderInput("category", "Category")}
-                    {/* {this.validator.message(
-                      "category",
-                      data.category,
-                      "required",
-                      { className: "text-red-800" }
-                    )} */}
-                  </div>
+                  <div>{this.renderInput("category", "Category")}</div>
                 </div>
               </div>
               <div

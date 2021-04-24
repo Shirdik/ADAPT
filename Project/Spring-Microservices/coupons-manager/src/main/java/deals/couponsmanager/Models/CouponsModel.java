@@ -75,6 +75,18 @@ public class CouponsModel {
         return couponCode;
     }
 
+    public CouponsModel(String couponCode, String title, String description, String imageurl, String link,
+            double rewards, String category) {
+        this.couponCode = couponCode;
+        this.title = title;
+        this.description = description;
+        this.imageurl = imageurl;
+        this.link = link;
+        this.rewards = rewards;
+        this.category = category;
+        this.usernames = Collections.emptySet();
+    }
+
     public void setCouponCode(String couponCode) {
         this.couponCode = couponCode;
     }

@@ -7,10 +7,7 @@ class DealUpdaterComponent extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
-  // constructor() {
-  //   super();
-  //   this.validator = new SimpleReactValidator();
-  // }
+
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -23,7 +20,7 @@ class DealUpdaterComponent extends Form {
         dealsService
           .editDeal(this.state.data)
           .then(() => {
-            alert("Updated Deal!");
+            alert("Deal Updated!");
           })
           .catch((e) => console.log(e));
       } else {
@@ -96,14 +93,14 @@ class DealUpdaterComponent extends Form {
                   </div>
                   <div>
                     {this.renderInput("rewards", "Rewards")}
-                    {/* {this.validator.message(
+                    {this.validator.message(
                       "rewards",
                       data.rewards,
-                      "required",
+                      "numeric|min:0,num",
                       {
                         className: "text-red-800",
                       }
-                    )} */}
+                    )}
                   </div>
                   <div>
                     {this.renderInput("category", "Category")}

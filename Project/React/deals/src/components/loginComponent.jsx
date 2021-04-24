@@ -13,10 +13,7 @@ class Login extends Form {
   componentWillMount() {
     this.validator = new SimpleReactValidator();
   }
-  // constructor() {
-  //   super();
-  //   this.validator = new SimpleReactValidator();
-  // }
+
   handleChange = ({ target }) => {
     const { data } = { ...this.state };
     data[target.name] = target.value;
@@ -26,15 +23,24 @@ class Login extends Form {
   handleSubmit = async () => {
     try {
       if (this.validator.allValid()) {
-        await AuthService.login(this.state.data).then(() => {
-          this.props.history.push("/");
-          window.location.reload();
-          alert("Logged In Successfully");
-        });
+        await AuthService.login(this.state.data)
+          .then((data) => {
+            if (data.response === "Authentication Succesful!") {
+              alert("Logged In Successfully");
+              this.props.history.push("/");
+              window.location.reload();
+            } else {
+              alert("Bad Credentials");
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         this.validator.showMessages();
       }
     } catch (e) {
+      alert("Something went Wrong!, Please try again");
       console.log(e);
     }
   };
@@ -61,7 +67,7 @@ class Login extends Form {
                 {this.validator.message(
                   "username",
                   this.state.data.username,
-                  "required|alpha",
+                  "required|alpha_num",
                   { className: "text-red-800" }
                 )}
               </div>
@@ -70,7 +76,7 @@ class Login extends Form {
                 {this.validator.message(
                   "password",
                   this.state.data.password,
-                  "required",
+                  "required|alpha_num",
                   { className: "text-red-800" }
                 )}
               </div>

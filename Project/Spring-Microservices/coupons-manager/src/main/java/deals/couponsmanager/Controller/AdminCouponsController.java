@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import deals.couponsmanager.Models.CouponsModel;
+import deals.couponsmanager.dto.RequestModel;
 import deals.couponsmanager.dto.RequestResponse;
 import deals.couponsmanager.Service.CouponsRepository;
 
@@ -23,9 +24,10 @@ public class AdminCouponsController {
 
     // Add Coupon
     @PostMapping("/addCoupon")
-    public ResponseEntity<?> addDeal(@RequestBody CouponsModel coupon) {
-        couponsRepository.save(coupon);
-        return ResponseEntity.ok(new RequestResponse("Added Coupon to the database:" + coupon.getCouponCode()));
+    public ResponseEntity<?> addDeal(@RequestBody RequestModel coupon) {
+        couponsRepository.save(new CouponsModel(coupon.getCode(), coupon.getTitle(), coupon.getDescription(),
+                coupon.getImageurl(), coupon.getLink(), coupon.getRewards(), coupon.getCategory()));
+        return ResponseEntity.ok(new RequestResponse("Added Coupon to the database:" + coupon.getCode()));
     }
 
     // Edit Coupon
