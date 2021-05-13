@@ -122,33 +122,11 @@ public class UserModelTest {
     }
 
     @Test
-    public void testAddDealCode() {
-        // TODO: This test is incomplete.
-        //   Reason: No meaningful assertions found.
-        //   To help Diffblue Cover to find assertions, please add getters to the
-        //   class under test that return fields written by the method under test.
-        //   See https://diff.blue/R004
-
-        (new UserModel()).addDealCode("42");
-    }
-
-    @Test
     public void testAddDealCode2() {
         UserModel userModel = new UserModel();
         userModel.setDealCodes(new HashSet<String>());
         userModel.addDealCode("42");
         assertEquals(1, userModel.getDealCodes().size());
-    }
-
-    @Test
-    public void testAddDealCode3() {
-        // TODO: This test is incomplete.
-        //   Reason: No meaningful assertions found.
-        //   To help Diffblue Cover to find assertions, please add getters to the
-        //   class under test that return fields written by the method under test.
-        //   See https://diff.blue/R004
-
-        (new UserModel()).addDealCode("42");
     }
 
     @Test
@@ -160,33 +138,11 @@ public class UserModelTest {
     }
 
     @Test
-    public void testAddCouponCode() {
-        // TODO: This test is incomplete.
-        //   Reason: No meaningful assertions found.
-        //   To help Diffblue Cover to find assertions, please add getters to the
-        //   class under test that return fields written by the method under test.
-        //   See https://diff.blue/R004
-
-        (new UserModel()).addCouponCode("42");
-    }
-
-    @Test
     public void testAddCouponCode2() {
         UserModel userModel = new UserModel();
         userModel.setCouponCodes(new HashSet<String>());
         userModel.addCouponCode("42");
         assertEquals(1, userModel.getCouponCodes().size());
-    }
-
-    @Test
-    public void testAddCouponCode3() {
-        // TODO: This test is incomplete.
-        //   Reason: No meaningful assertions found.
-        //   To help Diffblue Cover to find assertions, please add getters to the
-        //   class under test that return fields written by the method under test.
-        //   See https://diff.blue/R004
-
-        (new UserModel()).addCouponCode("42");
     }
 
     @Test
@@ -229,4 +185,3 @@ public class UserModelTest {
         assertSame(stringSet, userModel.getCouponCodes());
     }
 }
-

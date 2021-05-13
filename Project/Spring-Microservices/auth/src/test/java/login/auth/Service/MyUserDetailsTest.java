@@ -47,18 +47,4 @@ public class MyUserDetailsTest {
         verify(userModel).getRoles();
     }
 
-    @Test
-    public void testConstructor3() {
-        UserModel userModel = mock(UserModel.class);
-        when(userModel.getRoles()).thenReturn("");
-        when(userModel.getActive()).thenReturn(true);
-        when(userModel.getPassword()).thenReturn("foo");
-        when(userModel.getUserName()).thenReturn("foo");
-        new MyUserDetails(userModel);
-        verify(userModel).getPassword();
-        verify(userModel).getActive();
-        verify(userModel).getUserName();
-        verify(userModel).getRoles();
-    }
 }
-

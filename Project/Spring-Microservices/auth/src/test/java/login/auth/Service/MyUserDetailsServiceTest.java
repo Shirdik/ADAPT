@@ -22,7 +22,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-@ContextConfiguration(classes = {MyUserDetailsService.class})
+@ContextConfiguration(classes = { MyUserDetailsService.class })
 @ExtendWith(SpringExtension.class)
 public class MyUserDetailsServiceTest {
     @Autowired
@@ -49,27 +49,8 @@ public class MyUserDetailsServiceTest {
         assertTrue(actualLoadUserByUsernameResult.isEnabled());
         assertEquals("iloveyou", actualLoadUserByUsernameResult.getPassword());
         assertEquals("janedoe", actualLoadUserByUsernameResult.getUsername());
-        assertEquals("Roles",
-                ((ArrayList<? extends GrantedAuthority>) actualLoadUserByUsernameResult.getAuthorities()).get(0)
-                        .getAuthority());
-        verify(this.userRepository).findById(anyString());
-    }
-
-    @Test
-    public void testLoadUserByUsername2() throws UsernameNotFoundException {
-        UserModel userModel = new UserModel();
-        userModel.setLastName("Doe");
-        userModel.setActive(true);
-        userModel.setPassword("iloveyou");
-        userModel.setEmail("jane.doe@example.org");
-        userModel.setUserName("janedoe");
-        userModel.setDealCodes(new HashSet<String>());
-        userModel.setRoles("");
-        userModel.setFirstName("Jane");
-        userModel.setCouponCodes(new HashSet<String>());
-        Optional<UserModel> ofResult = Optional.<UserModel>of(userModel);
-        when(this.userRepository.findById(anyString())).thenReturn(ofResult);
-        this.myUserDetailsService.loadUserByUsername("janedoe");
+        assertEquals("Roles", ((ArrayList<? extends GrantedAuthority>) actualLoadUserByUsernameResult.getAuthorities())
+                .get(0).getAuthority());
         verify(this.userRepository).findById(anyString());
     }
 
@@ -80,4 +61,3 @@ public class MyUserDetailsServiceTest {
         verify(this.userRepository).findById(anyString());
     }
 }
-

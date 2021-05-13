@@ -1,0 +1,121 @@
+------------------------------------------------------------------
+User Details
+------------------------------------------------------------------
+{
+    "username":"venkat",
+    "firstName":"Singothu",
+    "lastName":"Venkata sai ram",
+    "password":"venkat",
+    "email":"venkat@outlook.com",
+    "roles":"ROLE_USER",
+    "active": true,
+    "rewards":20,
+    "dealIds":[],
+    "couponIds":[]
+},
+{
+    "username":"shirdi",
+    "firstName":"Kummarakuntla",
+    "lastName":"Shirdi",
+    "password":"shirdi1241",
+    "email":"shirdi1241@outlook.com",
+    "roles":"ROLE_ADMIN",
+    "active": true,
+    "rewards":20,
+    "dealIds":[],
+    "couponIds":[]
+},
+{
+    "id":3,
+    "username":"chandrika",
+    "firstName":"Kummarakuntla",
+    "lastName":"chandrika",
+    "password":"gehini1302",
+    "email":"gehini1302@outlook.com",
+    "roles":"ROLE_USER",
+    "active": true,
+    "rewards":20,
+    "dealIds":[],
+    "couponIds":[]
+},
+
+-----------------------------------------------------
+Coupons Data
+-----------------------------------------------------
+[
+    {
+        "dealCode": "ONEPLUS",
+        "title": "Oneplus 7",
+        "description": "Camera Co-Developed with Hasselblad, 48 MP Main camera, 50 MP Ultra Wide Angle Camera with Sensor size of 1/1.56'', 8 MP Telepoto Lens, 2 MP Monochorme Lens,16 MP Front Camera\nQualcomm Snapdragon 888 Processor with Adreno 660 GPU",
+        "imageurl": "https://image01.oneplus.net/ebp/202003/03/1-m00-11-8c-rb8bwl5efu2anvzhaaisltx0gma860_840_840.png",
+        "link": "https:oneplus.com",
+        "usernames": [
+            "venkat",
+            "shirdi"
+        ],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "APPLE",
+        "title": "IPhone 12",
+        "description": "A14 Bionic, the fastest chip in a smartphone.An edge-to-edge OLED display. Ceramic Shield with four times better drop performance. And Night mode on every camera. iPhone 12 has it all",
+        "imageurl": "https://pngimg.com/uploads/iphone_12/iphone_12_PNG23.png",
+        "link": "https://www.apple.com/in/iphone-12/",
+        "usernames": [
+            "venkat"
+        ],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "HASSELBLAD",
+        "title": "Oneplus 9 pro",
+        "description": "Camera Co-Developed with Hasselblad, 48 MP Main camera, 50 MP Ultra Wide Angle Camera with Sensor size of 1/1.56'', 8 MP Telepoto Lens, 2 MP Monochorme Lens,16 MP Front Camera Qualcomm Snapdragon 888 Processor with Adreno 660 GPU",
+        "imageurl": "https://image01.oneplus.net/ebp/202103/12/1-m00-21-f0-rb8lb2blkxuas-m6aajpcl4bca4660_840_840.png",
+        "link": "https://www.oneplus.in/oneplus-9-pro?from=homepage",
+        "usernames": [],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "SAMSUNG",
+        "title": "Samsung s21 Ultra",
+        "description": "Quad rear camera setup- Main Camera 108MP + Ultra Wide 12MP Dual Pixel Camera + Tele1 3X 10MP Dual Pixel Camera + Tele2 10x 10MP Dual pixel camera | 40MP front facing came(6.8-inch) Dynamic AMOLED 2X Display, WQHD+ resolution with 3200 X 1440 pixels resolution, 515 PPI with 16M colo",
+        "imageurl": "https://images.samsung.com/is/image/samsung/p6pim/uk/galaxy-s21/gallery/uk-galaxy-s21-ultra-5g-g988-371437-sm-g998bzkdeea-368888378?$684_547_PNG$",
+        "link": "https://www.samsung.com/in/smartphones/galaxy-s21-5g/buy/",
+        "usernames": [],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "MI11",
+        "title": "MI 11",
+        "description": "Xiaomi Mi 11 is a gamer's paradise with its Qualcomm Snapdragon 888 chipset, which offers HDR level graphics teamed with desktop level capabilities. Considering the camera options loaded within the device, vloggers will get to shoot multiple contents using a single smartphone",
+        "imageurl": "https://blog.mi.com/en/wp-content/uploads/2021/02/K2-all-kv%E7%BB%84%E5%90%882-1024x1024.png",
+        "link": "https://www.mi.com/global/mi-11/overview",
+        "usernames": [],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "ROG5",
+        "title": "ASUS ROG 5",
+        "description": "Play to the max with ROG Phone 5 Ultimate, the gaming phone that takes no prisoners. Powered to win by the latest Qualcomm® Snapdragon™ 888 5G Mobile Platform, this futuristic wonder packs an unbelievably responsive 144 Hz / 1 ms display",
+        "imageurl": "https://dlcdnwebimgs.asus.com/gain/31A7E23E-1A33-4DB8-B96B-5BAACA45D982/w1000/h732",
+        "link": "https://rog.asus.com/phones/rog-phone-5-ultimate-model/",
+        "usernames": [],
+        "rewards": 100.0,
+        "category": "electronics"
+    },
+    {
+        "dealCode": "REALMEX3",
+        "title": "Realme X3",
+        "description": "The Realme X3 SuperZoom Edition is one of the most prominent offering by the device maker that gets a major highlight for its cameras. To back the enhanced camera setup, the device showcases an overwhelming spec sheet with 8GB of RAM",
+        "imageurl": "https://cdn.shopify.com/s/files/1/0240/8470/9453/products/realme_X3_SuperZoom_White_Blue_1000x.png?v=1599750506",
+        "link": "https://www.realme.com/in/realme-x3-superzoom",
+        "usernames": [],
+        "rewards": 100.0,
+        "category": "electronics"
+    }
+]

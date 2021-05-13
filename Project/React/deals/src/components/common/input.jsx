@@ -14,6 +14,7 @@ class Input extends Component {
           name={this.props.name}
           label={this.props.label}
           id={this.props.name}
+          type={this.props.type}
           value={this.props.value}
           onChange={this.props.onChange}
           className={`form-control nm-flat-gray-200-sm border-none rounded-lg inline-block w-full mt-1 focus:nm-inset-gray-200-sm p-1 ${this.props.classes} focus:outline-none`}

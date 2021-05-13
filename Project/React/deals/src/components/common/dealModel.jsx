@@ -26,8 +26,6 @@ class DealModel extends Component {
     if (this.state.user.username === "") {
       alert("Please Login!");
       console.log(this.props);
-      // this.props.history.push("/Login");
-      // window.location.reload();
     } else {
       DealsService.garbDeal(
         authService.getCurrentUser().username,

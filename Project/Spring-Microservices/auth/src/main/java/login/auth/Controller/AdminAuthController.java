@@ -41,7 +41,7 @@ public class AdminAuthController {
         return userRepository.findAll();
     }
 
-    // To delete by id
+    // Delete by id
     @DeleteMapping("/delete/{username}")
     public ResponseEntity<?> deleteUser(@PathVariable String username) throws Exception {
         userRepository.deleteById(username);
